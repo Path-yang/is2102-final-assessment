@@ -307,8 +307,8 @@ export default function CoordinatorView() {
               </div>
               <h1 className="text-2xl font-bold">Hours Approved</h1>
               <p className="text-gray-600">Volunteer has been notified</p>
-              <Button onClick={() => setCurrentStep(2)} className="w-full">
-                Next Pending Approval
+              <Button onClick={() => setCurrentStep(1)} className="w-full">
+                Back to Dashboard
               </Button>
             </div>
           </CardContent>
@@ -331,8 +331,8 @@ export default function CoordinatorView() {
               </div>
               <h1 className="text-2xl font-bold">Clarification Requested</h1>
               <p className="text-gray-600">The volunteer has been notified to provide additional information</p>
-              <Button onClick={() => setCurrentStep(2)} className="w-full">
-                Back to Queue
+              <Button onClick={() => setCurrentStep(1)} className="w-full">
+                Back to Dashboard
               </Button>
             </div>
           </CardContent>
@@ -361,9 +361,9 @@ export default function CoordinatorView() {
               </div>
               <Button onClick={() => {
                 setRejectionReason("")
-                setCurrentStep(2)
+                setCurrentStep(1)
               }} className="w-full">
-                Next Pending Approval
+                Back to Dashboard
               </Button>
             </div>
           </CardContent>
