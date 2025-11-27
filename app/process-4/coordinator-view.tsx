@@ -16,12 +16,12 @@ export default function CoordinatorView() {
 
   if (currentStep === 1) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         <Card>
           <CardHeader>
             <CardTitle>Coordinator Dashboard</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6">
+          <CardContent className="space-y-4 sm:space-y-6">
             <div className="p-4 bg-orange-50 border border-orange-200 rounded-lg">
               <div className="flex items-center gap-2 mb-2">
                 <AlertCircle className="w-5 h-5 text-orange-600" />
@@ -34,7 +34,7 @@ export default function CoordinatorView() {
             </Button>
 
             <div>
-              <h3 className="font-semibold mb-3">Recent Submissions</h3>
+              <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3">Recent Submissions</h3>
               <div className="space-y-2">
                 {[
                   { name: "John Doe", event: "Food Pantry", hours: 4.5, date: "Dec 2" },
@@ -42,15 +42,15 @@ export default function CoordinatorView() {
                 ].map((submission, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center justify-between p-3 border rounded-lg"
+                    className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 p-2.5 sm:p-3 border rounded-lg"
                   >
-                    <div>
-                      <p className="font-medium">{submission.name}</p>
-                      <p className="text-sm text-gray-600">
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm sm:text-base font-medium">{submission.name}</p>
+                      <p className="text-xs sm:text-sm text-gray-600">
                         {submission.event} • {submission.hours} hours • {submission.date}
                       </p>
                     </div>
-                    <Badge variant="warning">Pending</Badge>
+                    <Badge variant="warning" className="text-xs">Pending</Badge>
                   </div>
                 ))}
               </div>
@@ -63,10 +63,10 @@ export default function CoordinatorView() {
 
   if (currentStep === 2) {
     return (
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold mb-2">Hour Approval Queue</h1>
-          <p className="text-gray-600">Review and approve volunteer hour submissions</p>
+      <div className="space-y-4 sm:space-y-6">
+        <div className="px-1">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">Hour Approval Queue</h1>
+          <p className="text-sm sm:text-base text-gray-600">Review and approve volunteer hour submissions</p>
         </div>
 
         <Card>
@@ -125,9 +125,9 @@ export default function CoordinatorView() {
 
   if (currentStep === 3) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         <div>
-          <h1 className="text-3xl font-bold mb-2">Review Hour Entry</h1>
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">Review Hour Entry</h1>
           <p className="text-gray-600">Verify volunteer hours and approve or reject</p>
         </div>
 
@@ -224,7 +224,7 @@ export default function CoordinatorView() {
 
   if (currentStep === 4) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         <Card className="max-w-md mx-auto">
           <CardContent className="pt-6">
             <div className="text-center space-y-4">

@@ -45,9 +45,9 @@ export default function Step2_3({ onNext, onBack, formData, setFormData }: Step2
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div>
-        <h1 className="text-3xl font-bold mb-2">Schedule & Recurrence</h1>
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">Schedule & Recurrence</h1>
         <p className="text-gray-600">Step 2: Set up when this event will occur</p>
       </div>
 

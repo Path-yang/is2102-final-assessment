@@ -14,9 +14,9 @@ interface Step2_6Props {
 
 export default function Step2_6({ onNext, onBack, formData }: Step2_6Props) {
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div>
-        <h1 className="text-3xl font-bold mb-2">Preview & Confirm</h1>
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">Preview & Confirm</h1>
         <p className="text-gray-600">Step 5: Review your event before creating</p>
       </div>
 
@@ -32,7 +32,7 @@ export default function Step2_6({ onNext, onBack, formData }: Step2_6Props) {
             </Button>
           </div>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-4 sm:space-y-6">
           <div className="h-48 bg-gray-200 rounded-lg flex items-center justify-center">
             <span className="text-gray-500">Cover Image Preview</span>
           </div>

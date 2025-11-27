@@ -11,17 +11,17 @@ interface Step2_1Props {
 
 export default function Step2_1({ onNext }: Step2_1Props) {
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold mb-2">Program Coordinator Portal</h1>
-        <p className="text-gray-600">Welcome, Jane Smith - Food Bank Program</p>
+    <div className="space-y-4 sm:space-y-6">
+      <div className="px-1">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">Program Coordinator Portal</h1>
+        <p className="text-sm sm:text-base text-gray-600">Welcome, Jane Smith - Food Bank Program</p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4">
         <Card>
           <CardContent className="pt-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary">5</div>
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">5</div>
               <div className="text-sm text-gray-600 mt-1">Active Events</div>
             </div>
           </CardContent>
@@ -29,7 +29,7 @@ export default function Step2_1({ onNext }: Step2_1Props) {
         <Card>
           <CardContent className="pt-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary">47</div>
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">47</div>
               <div className="text-sm text-gray-600 mt-1">Volunteers This Month</div>
             </div>
           </CardContent>
@@ -37,7 +37,7 @@ export default function Step2_1({ onNext }: Step2_1Props) {
         <Card>
           <CardContent className="pt-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-orange-600">12</div>
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-orange-600">12</div>
               <div className="text-sm text-gray-600 mt-1">Pending Hour Approvals</div>
             </div>
           </CardContent>
@@ -45,20 +45,20 @@ export default function Step2_1({ onNext }: Step2_1Props) {
         <Card>
           <CardContent className="pt-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary">8</div>
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">8</div>
               <div className="text-sm text-gray-600 mt-1">Upcoming Shifts</div>
             </div>
           </CardContent>
         </Card>
       </div>
 
-      <div className="flex gap-3">
-        <Button onClick={onNext} size="lg" className="flex-1">
+      <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+        <Button onClick={onNext} size="lg" className="flex-1 w-full sm:w-auto">
           Create New Event
         </Button>
-        <Button variant="outline" size="lg">Manage Events</Button>
-        <Button variant="outline" size="lg">Approve Hours</Button>
-        <Button variant="outline" size="lg">Message Volunteers</Button>
+        <Button variant="outline" size="lg" className="flex-1 sm:flex-none">Manage Events</Button>
+        <Button variant="outline" size="lg" className="flex-1 sm:flex-none">Approve Hours</Button>
+        <Button variant="outline" size="lg" className="flex-1 sm:flex-none">Message Volunteers</Button>
       </div>
 
       <Card>

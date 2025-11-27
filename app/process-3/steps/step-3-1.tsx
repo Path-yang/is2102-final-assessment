@@ -10,18 +10,18 @@ interface Step3_1Props {
 
 export default function Step3_1({ onNext }: Step3_1Props) {
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div>
-        <h1 className="text-3xl font-bold mb-2">Organization Administrator Portal</h1>
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">Organization Administrator Portal</h1>
         <p className="text-gray-600">Welcome, Admin User</p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         <Card>
           <CardContent className="pt-6">
             <div className="text-center">
               <Users className="w-8 h-8 text-primary mx-auto mb-2" />
-              <div className="text-3xl font-bold text-primary">342</div>
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">342</div>
               <div className="text-sm text-gray-600 mt-1">Total Active Volunteers</div>
             </div>
           </CardContent>
@@ -30,7 +30,7 @@ export default function Step3_1({ onNext }: Step3_1Props) {
           <CardContent className="pt-6">
             <div className="text-center">
               <Calendar className="w-8 h-8 text-primary mx-auto mb-2" />
-              <div className="text-3xl font-bold text-primary">8,547</div>
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">8,547</div>
               <div className="text-sm text-gray-600 mt-1">Total Hours This Year</div>
             </div>
           </CardContent>
@@ -39,7 +39,7 @@ export default function Step3_1({ onNext }: Step3_1Props) {
           <CardContent className="pt-6">
             <div className="text-center">
               <TrendingUp className="w-8 h-8 text-primary mx-auto mb-2" />
-              <div className="text-3xl font-bold text-primary">156</div>
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">156</div>
               <div className="text-sm text-gray-600 mt-1">Events Completed</div>
             </div>
           </CardContent>
@@ -48,7 +48,7 @@ export default function Step3_1({ onNext }: Step3_1Props) {
           <CardContent className="pt-6">
             <div className="text-center">
               <DollarSign className="w-8 h-8 text-primary mx-auto mb-2" />
-              <div className="text-3xl font-bold text-primary">$45,230</div>
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">$45,230</div>
               <div className="text-sm text-gray-600 mt-1">Funds Raised</div>
             </div>
           </CardContent>
@@ -64,7 +64,7 @@ export default function Step3_1({ onNext }: Step3_1Props) {
         <Button variant="outline" size="lg">Fundraising Campaigns</Button>
       </div>
 
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-2 gap-4 sm:p-6>
         <Card>
           <CardHeader>
             <CardTitle>Volunteer Hours Trend</CardTitle>

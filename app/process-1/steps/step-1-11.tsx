@@ -19,87 +19,87 @@ export default function Step1_11({ formData }: Step1_11Props) {
   const daysUntil = 5
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold mb-2">
-          Welcome, {formData.fullName || "Volunteer"}!
+    <div className="space-y-4 sm:space-y-6">
+      <div className="px-1">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">
+          Welcome, {formData?.fullName || "Volunteer"}!
         </h1>
-        <p className="text-gray-600">Your volunteer journey starts here</p>
+        <p className="text-sm sm:text-base text-gray-600">Your volunteer journey starts here</p>
       </div>
 
       <Card>
-        <CardHeader>
-          <CardTitle>Your Impact Dashboard</CardTitle>
+        <CardHeader className="p-4 sm:p-6">
+          <CardTitle className="text-lg sm:text-xl">Your Impact Dashboard</CardTitle>
         </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="grid grid-cols-3 gap-4">
-            <div className="text-center p-4 bg-gray-50 rounded-lg">
-              <div className="text-3xl font-bold text-primary">0</div>
-              <div className="text-sm text-gray-600 mt-1">Total Hours</div>
+        <CardContent className="space-y-4 sm:space-y-6 p-4 sm:p-6 pt-0">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4">
+            <div className="text-center p-2 sm:p-4 bg-gray-50 rounded-lg">
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">0</div>
+              <div className="text-xs sm:text-sm text-gray-600 mt-1">Total Hours</div>
             </div>
-            <div className="text-center p-4 bg-gray-50 rounded-lg">
-              <div className="text-3xl font-bold text-primary">0</div>
-              <div className="text-sm text-gray-600 mt-1">Events Attended</div>
+            <div className="text-center p-2 sm:p-4 bg-gray-50 rounded-lg">
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">0</div>
+              <div className="text-xs sm:text-sm text-gray-600 mt-1">Events Attended</div>
             </div>
-            <div className="text-center p-4 bg-gray-50 rounded-lg">
-              <div className="text-3xl font-bold text-primary">0</div>
-              <div className="text-sm text-gray-600 mt-1">Impact Points</div>
+            <div className="text-center p-2 sm:p-4 bg-gray-50 rounded-lg">
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">0</div>
+              <div className="text-xs sm:text-sm text-gray-600 mt-1">Impact Points</div>
             </div>
           </div>
 
-          <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-            <p className="font-semibold text-blue-900 mb-1">
+          <div className="p-3 sm:p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <p className="text-sm sm:text-base font-semibold text-blue-900 mb-1">
               Your next event is in {daysUntil} days!
             </p>
-            <p className="text-sm text-blue-700">
+            <p className="text-xs sm:text-sm text-blue-700 break-words">
               Don't forget: {event.name} on {event.date}
             </p>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-3">Onboarding Checklist</h3>
-            <div className="space-y-2">
+            <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3">Onboarding Checklist</h3>
+            <div className="space-y-1.5 sm:space-y-2">
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-green-600" />
-                <span>Create account</span>
+                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 flex-shrink-0" />
+                <span className="text-sm sm:text-base">Create account</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-green-600" />
-                <span>Verify email</span>
+                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 flex-shrink-0" />
+                <span className="text-sm sm:text-base">Verify email</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-green-600" />
-                <span>Complete first event</span>
+                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 flex-shrink-0" />
+                <span className="text-sm sm:text-base">Complete first event</span>
               </div>
               <div className="flex items-center gap-2">
-                <Clock className="w-5 h-5 text-gray-400" />
-                <span>Log first hours</span>
+                <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 flex-shrink-0" />
+                <span className="text-sm sm:text-base">Log first hours</span>
               </div>
             </div>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-3">Upcoming Events</h3>
+            <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3">Upcoming Events</h3>
             <Card>
-              <CardContent className="pt-6">
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <h4 className="font-semibold">{event.name}</h4>
-                      <Badge variant="success">Registered</Badge>
+              <CardContent className="pt-4 sm:pt-6 p-4 sm:p-6">
+                <div className="flex flex-col sm:flex-row items-start justify-between gap-3 sm:gap-0">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
+                      <h4 className="text-sm sm:text-base font-semibold break-words">{event.name}</h4>
+                      <Badge variant="success" className="text-xs">Registered</Badge>
                     </div>
-                    <div className="flex items-center gap-4 text-sm text-gray-600">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-600">
                       <div className="flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
+                        <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                         {event.date}
                       </div>
                       <div className="flex items-center gap-1">
-                        <Clock className="w-4 h-4" />
+                        <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                         {event.time}
                       </div>
                     </div>
                   </div>
-                  <Button variant="outline" size="sm">
+                  <Button variant="outline" size="sm" className="w-full sm:w-auto mt-2 sm:mt-0">
                     View Details
                   </Button>
                 </div>
@@ -108,8 +108,8 @@ export default function Step1_11({ formData }: Step1_11Props) {
           </div>
 
           <div>
-            <h3 className="font-semibold mb-3">Recommended for You</h3>
-            <div className="text-sm text-gray-500">
+            <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3">Recommended for You</h3>
+            <div className="text-xs sm:text-sm text-gray-500">
               Based on your skills and interests, we'll show you personalized
               opportunities here.
             </div>

@@ -13,25 +13,25 @@ export default function VolunteerCheckin() {
 
   if (currentStep === 1) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         <Card>
           <CardContent className="pt-6">
-            <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg mb-4">
+            <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg mb-3 sm:mb-4">
               <p className="font-semibold text-blue-900">You have an event today!</p>
             </div>
             <Card>
               <CardContent className="pt-6">
                 <div className="space-y-4">
                   <div>
-                    <h3 className="text-xl font-bold mb-2">Food Pantry Distribution</h3>
-                    <div className="flex items-center gap-4 text-sm text-gray-600">
+                    <h3 className="text-lg sm:text-xl font-bold mb-1.5 sm:mb-2">Food Pantry Distribution</h3>
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-600">
                       <div className="flex items-center gap-1">
-                        <Clock className="w-4 h-4" />
+                        <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                         9:00 AM - 1:00 PM
                       </div>
                       <div className="flex items-center gap-1">
-                        <MapPin className="w-4 h-4" />
-                        Heartfelt Hands Community Center
+                        <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                        <span className="break-words">Heartfelt Hands Community Center</span>
                       </div>
                     </div>
                   </div>
@@ -52,28 +52,28 @@ export default function VolunteerCheckin() {
 
   if (currentStep === 2) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         <Card>
           <CardContent className="pt-6">
-            <div className="text-center space-y-4">
-              <h1 className="text-2xl font-bold">QR Scanner</h1>
+            <div className="text-center space-y-3 sm:space-y-4">
+              <h1 className="text-xl sm:text-2xl font-bold">QR Scanner</h1>
               <div className="relative">
-                <div className="w-full h-96 bg-gray-900 rounded-lg flex items-center justify-center">
-                  <div className="border-4 border-white rounded-lg w-64 h-64 flex items-center justify-center">
-                    <p className="text-white text-sm">Camera View</p>
+                <div className="w-full h-64 sm:h-96 bg-gray-900 rounded-lg flex items-center justify-center">
+                  <div className="border-2 sm:border-4 border-white rounded-lg w-48 h-48 sm:w-64 sm:h-64 flex items-center justify-center">
+                    <p className="text-white text-xs sm:text-sm">Camera View</p>
                   </div>
                 </div>
-                <div className="absolute top-4 left-4 right-4 flex justify-between">
-                  <Button variant="outline" size="sm">Flash</Button>
-                  <Button variant="outline" size="sm">Switch Camera</Button>
+                <div className="absolute top-2 left-2 right-2 sm:top-4 sm:left-4 sm:right-4 flex justify-between gap-2">
+                  <Button variant="outline" size="sm" className="text-xs sm:text-sm">Flash</Button>
+                  <Button variant="outline" size="sm" className="text-xs sm:text-sm">Switch Camera</Button>
                 </div>
               </div>
-              <p className="text-sm text-gray-600">
+              <p className="text-xs sm:text-sm text-gray-600 px-2">
                 Point your camera at the check-in QR code
               </p>
               <button
                 onClick={() => setCurrentStep(3)}
-                className="text-sm text-primary hover:underline"
+                className="text-xs sm:text-sm text-primary hover:underline"
               >
                 Having trouble? Enter code manually
               </button>
@@ -89,7 +89,7 @@ export default function VolunteerCheckin() {
 
   if (currentStep === 3) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         <Card>
           <CardContent className="pt-6">
             <div className="text-center space-y-4">
@@ -117,10 +117,10 @@ export default function VolunteerCheckin() {
 
   if (currentStep === 4) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         <Card className="max-w-md mx-auto">
           <CardContent className="pt-6">
-            <div className="text-center space-y-6">
+            <div className="text-center space-y-4 sm:space-y-6">
               <div className="flex justify-center">
                 <div className="w-24 h-24 rounded-full bg-green-100 flex items-center justify-center">
                   <CheckCircle2 className="w-12 h-12 text-green-600" />
@@ -183,13 +183,13 @@ export default function VolunteerCheckin() {
 
   if (currentStep === 5) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         <Card>
           <CardContent className="pt-6">
-            <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg mb-4">
+            <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg mb-3 sm:mb-4">
               <p className="font-semibold text-blue-900">Active Event</p>
             </div>
-            <div className="text-center mb-4">
+            <div className="text-center mb-3 sm:mb-4">
               <p className="text-2xl font-bold">2 hours 15 minutes</p>
               <p className="text-sm text-gray-600">into your shift</p>
             </div>
@@ -215,10 +215,10 @@ export default function VolunteerCheckin() {
     const [feedback, setFeedback] = useState("")
 
     return (
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         <Card>
           <CardContent className="pt-6">
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               <div className="text-center">
                 <h1 className="text-2xl font-bold mb-2">Ready to check out?</h1>
               </div>
@@ -300,10 +300,10 @@ export default function VolunteerCheckin() {
 
   if (currentStep === 7) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         <Card className="max-w-md mx-auto">
           <CardContent className="pt-6">
-            <div className="text-center space-y-6">
+            <div className="text-center space-y-4 sm:space-y-6">
               <div className="flex justify-center">
                 <div className="w-24 h-24 rounded-full bg-green-100 flex items-center justify-center">
                   <CheckCircle2 className="w-12 h-12 text-green-600" />

@@ -19,16 +19,16 @@ export default function Step3_4({ onNext }: Step3_4Props) {
   ]
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div>
-        <h1 className="text-3xl font-bold mb-2">Generating Report</h1>
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">Generating Report</h1>
         <p className="text-gray-600">Please wait while we compile your report</p>
       </div>
 
       <Card>
         <CardContent className="pt-6">
           <div className="space-y-4">
-            <Progress value={60} className="mb-4" />
+            <Progress value={60} className="mb-3 sm:mb-4" />
             {steps.map((step) => (
               <div key={step.id} className="flex items-center gap-3">
                 {step.completed ? (

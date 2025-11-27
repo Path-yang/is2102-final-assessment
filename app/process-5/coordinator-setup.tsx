@@ -13,7 +13,7 @@ export default function CoordinatorSetup() {
 
   if (currentStep === 1) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         <Card>
           <CardHeader>
             <CardTitle>Event Management</CardTitle>
@@ -39,27 +39,27 @@ export default function CoordinatorSetup() {
 
   if (currentStep === 2) {
     return (
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold mb-2">QR Code Generated</h1>
-          <p className="text-gray-600">Display this QR code at the event venue</p>
+      <div className="space-y-4 sm:space-y-6">
+        <div className="px-1">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">QR Code Generated</h1>
+          <p className="text-sm sm:text-base text-gray-600">Display this QR code at the event venue</p>
         </div>
 
         <Card>
           <CardContent className="pt-6">
-            <div className="text-center space-y-6">
+            <div className="text-center space-y-4 sm:space-y-6">
               <div>
                 <p className="font-semibold text-lg mb-2">Food Pantry Distribution</p>
                 <p className="text-sm text-gray-600">Saturday, Dec 7, 2024</p>
               </div>
 
-              <div className="flex justify-center">
-                <div className="w-64 h-64 bg-white border-4 border-gray-300 rounded-lg flex items-center justify-center">
-                  <QrCode className="w-48 h-48 text-gray-800" />
+              <div className="flex justify-center px-2">
+                <div className="w-48 h-48 sm:w-64 sm:h-64 bg-white border-2 sm:border-4 border-gray-300 rounded-lg flex items-center justify-center">
+                  <QrCode className="w-36 h-36 sm:w-48 sm:h-48 text-gray-800" />
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                 <Button variant="outline">
                   <Printer className="w-4 h-4 mr-2" />
                   Print QR Code
@@ -98,9 +98,9 @@ export default function CoordinatorSetup() {
 
   if (currentStep === 3) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         <div>
-          <h1 className="text-3xl font-bold mb-2">Live Attendance Dashboard</h1>
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">Live Attendance Dashboard</h1>
           <p className="text-gray-600">Real-time volunteer check-in monitoring</p>
         </div>
 
@@ -108,10 +108,10 @@ export default function CoordinatorSetup() {
           <CardHeader>
             <CardTitle>Attendance Overview</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="p-6 bg-primary/10 rounded-lg text-center">
+          <CardContent className="space-y-4 sm:space-y-6">
+            <div className="p-4 sm:p-6bg-primary/10 rounded-lg text-center">
               <p className="text-sm text-gray-600 mb-1">Total Checked In</p>
-              <p className="text-4xl font-bold text-primary">8/15</p>
+              <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary">8/15</p>
             </div>
 
             <div>

@@ -12,10 +12,10 @@ interface Step3_5Props {
 
 export default function Step3_5({ onNext, formData }: Step3_5Props) {
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold mb-2">Year-End Impact Report 2024 - Preview</h1>
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">Year-End Impact Report 2024 - Preview</h1>
           <p className="text-gray-600">Review your report before exporting</p>
         </div>
         <div className="flex gap-2">
@@ -29,7 +29,7 @@ export default function Step3_5({ onNext, formData }: Step3_5Props) {
         </div>
       </div>
 
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         <Card>
           <CardHeader>
             <CardTitle>Executive Summary</CardTitle>
@@ -44,7 +44,7 @@ export default function Step3_5({ onNext, formData }: Step3_5Props) {
           </CardContent>
         </Card>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
           {[
             { label: "Active Volunteers", value: "342", change: "+15% YoY" },
             { label: "Hours Contributed", value: "8,547", change: "+23% YoY" },

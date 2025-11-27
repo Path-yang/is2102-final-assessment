@@ -10,10 +10,10 @@ interface Step3_7Props {
 
 export default function Step3_7({ formData }: Step3_7Props) {
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <Card className="max-w-2xl mx-auto">
         <CardContent className="pt-6">
-          <div className="text-center space-y-6">
+          <div className="text-center space-y-4 sm:space-y-6">
             <div className="flex justify-center">
               <div className="w-24 h-24 rounded-full bg-green-100 flex items-center justify-center">
                 <CheckCircle2 className="w-12 h-12 text-green-600" />
@@ -21,7 +21,7 @@ export default function Step3_7({ formData }: Step3_7Props) {
             </div>
 
             <div>
-              <h1 className="text-3xl font-bold mb-2">Report Generated Successfully!</h1>
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">Report Generated Successfully!</h1>
               <p className="text-gray-600">Your report has been processed and delivered</p>
             </div>
 

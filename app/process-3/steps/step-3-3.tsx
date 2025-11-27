@@ -57,9 +57,9 @@ export default function Step3_3({ onNext, onBack, formData, setFormData }: Step3
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div>
-        <h1 className="text-3xl font-bold mb-2">Report Configuration</h1>
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">Report Configuration</h1>
         <p className="text-gray-600">Configure your Year-End Impact Report</p>
       </div>
 
@@ -68,7 +68,7 @@ export default function Step3_3({ onNext, onBack, formData, setFormData }: Step3
           <CardTitle>Report Settings</CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             <div>
               <Label>Date Range</Label>
               <div className="flex gap-4 mt-2">

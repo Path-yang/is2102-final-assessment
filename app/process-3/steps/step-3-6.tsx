@@ -31,9 +31,9 @@ export default function Step3_6({ onNext, formData }: Step3_6Props) {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div>
-        <h1 className="text-3xl font-bold mb-2">Export Report</h1>
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">Export Report</h1>
         <p className="text-gray-600">Choose export format and delivery options</p>
       </div>
 
@@ -41,10 +41,10 @@ export default function Step3_6({ onNext, formData }: Step3_6Props) {
         <CardHeader>
           <CardTitle>Export Options</CardTitle>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-4 sm:space-y-6">
           <div>
             <Label className="mb-3 block">Format</Label>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
                 { id: "pdf", label: "PDF", desc: "Recommended for sharing", icon: FileText },
                 { id: "excel", label: "Excel", desc: "For detailed analysis", icon: FileText },

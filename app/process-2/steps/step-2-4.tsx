@@ -82,9 +82,9 @@ export default function Step2_4({ onNext, onBack, formData, setFormData }: Step2
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div>
-        <h1 className="text-3xl font-bold mb-2">Shift Configuration</h1>
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">Shift Configuration</h1>
         <p className="text-gray-600">Step 3: Define roles and shifts for this event</p>
       </div>
 
@@ -95,10 +95,10 @@ export default function Step2_4({ onNext, onBack, formData, setFormData }: Step2
           <CardTitle>Event Shifts</CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             {shifts.map((shift: any, index: number) => (
               <Card key={shift.id} className="p-4">
-                <div className="flex justify-between items-start mb-4">
+                <div className="flex justify-between items-start mb-3 sm:mb-4">
                   <h3 className="font-semibold">Shift {index + 1}</h3>
                   {shifts.length > 1 && (
                     <Button

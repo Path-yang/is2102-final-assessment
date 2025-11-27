@@ -34,9 +34,9 @@ export default function Step2_2({ onNext, onBack, formData, setFormData }: Step2
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div>
-        <h1 className="text-3xl font-bold mb-2">Create New Event</h1>
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">Create New Event</h1>
         <p className="text-gray-600">Step 1: Basic Information</p>
       </div>
 

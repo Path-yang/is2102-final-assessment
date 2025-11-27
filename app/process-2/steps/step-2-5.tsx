@@ -48,9 +48,9 @@ export default function Step2_5({ onNext, onBack, formData, setFormData }: Step2
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div>
-        <h1 className="text-3xl font-bold mb-2">Additional Settings</h1>
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">Additional Settings</h1>
         <p className="text-gray-600">Step 4: Configure registration and notification settings</p>
       </div>
 
@@ -61,7 +61,7 @@ export default function Step2_5({ onNext, onBack, formData, setFormData }: Step2
           <CardTitle>Registration Settings</CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <Label htmlFor="opensDays">Registration opens (days before event)</Label>

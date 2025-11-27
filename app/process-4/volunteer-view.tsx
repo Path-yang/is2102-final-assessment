@@ -15,23 +15,23 @@ export default function VolunteerView() {
 
   if (currentStep === 1) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         <Card>
           <CardHeader>
             <CardTitle>Volunteer Dashboard</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid grid-cols-3 gap-4">
+          <CardContent className="space-y-4 sm:space-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="text-center p-4 bg-gray-50 rounded-lg">
-                <div className="text-3xl font-bold text-primary">20.5</div>
+                <div className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">20.5</div>
                 <div className="text-sm text-gray-600 mt-1">Total Hours</div>
               </div>
               <div className="text-center p-4 bg-gray-50 rounded-lg">
-                <div className="text-3xl font-bold text-primary">4</div>
+                <div className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">4</div>
                 <div className="text-sm text-gray-600 mt-1">Events Attended</div>
               </div>
               <div className="text-center p-4 bg-gray-50 rounded-lg">
-                <div className="text-3xl font-bold text-primary">4</div>
+                <div className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">4</div>
                 <div className="text-sm text-gray-600 mt-1">Pending Hours</div>
               </div>
             </div>
@@ -43,22 +43,22 @@ export default function VolunteerView() {
             </div>
 
             <div>
-              <h3 className="font-semibold mb-3">Recent Activity</h3>
+              <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3">Recent Activity</h3>
               <div className="space-y-2">
-                <div className="flex items-center justify-between p-3 border rounded-lg">
-                  <div>
-                    <p className="font-medium">Food Pantry Distribution</p>
-                    <p className="text-sm text-gray-600">Dec 2, 2024</p>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 p-2.5 sm:p-3 border rounded-lg">
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm sm:text-base font-medium break-words">Food Pantry Distribution</p>
+                    <p className="text-xs sm:text-sm text-gray-600">Dec 2, 2024</p>
                   </div>
-                  <Badge variant="warning">Awaiting log</Badge>
+                  <Badge variant="warning" className="text-xs">Awaiting log</Badge>
                 </div>
               </div>
             </div>
 
             <div>
-              <h3 className="font-semibold mb-3">Pending Hours</h3>
-              <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-                <p className="text-sm font-medium text-yellow-900">
+              <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3">Pending Hours</h3>
+              <div className="p-3 sm:p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <p className="text-xs sm:text-sm font-medium text-yellow-900">
                   4 hours awaiting approval
                 </p>
               </div>
@@ -71,10 +71,10 @@ export default function VolunteerView() {
 
   if (currentStep === 2) {
     return (
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold mb-2">Log Your Volunteer Hours</h1>
-          <p className="text-gray-600">Select an event to log hours for</p>
+      <div className="space-y-4 sm:space-y-6">
+        <div className="px-1">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">Log Your Volunteer Hours</h1>
+          <p className="text-sm sm:text-base text-gray-600">Select an event to log hours for</p>
         </div>
 
         <Card>
@@ -137,9 +137,9 @@ export default function VolunteerView() {
     }
 
     return (
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         <div>
-          <h1 className="text-3xl font-bold mb-2">Hour Entry Form</h1>
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">Hour Entry Form</h1>
           <p className="text-gray-600">Enter your volunteer hours for this event</p>
         </div>
 
@@ -148,7 +148,7 @@ export default function VolunteerView() {
             <CardTitle>Event Summary</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-2 mb-6">
+            <div className="space-y-2 mb-3 sm:mb-4 sm:mb-6">
               <p className="font-semibold">Food Pantry Distribution</p>
               <p className="text-sm text-gray-600">Dec 2, 2024 • Distribution Shift</p>
             </div>
@@ -246,7 +246,7 @@ export default function VolunteerView() {
 
   if (currentStep === 4) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         <Card className="max-w-md mx-auto">
           <CardContent className="pt-6">
             <div className="text-center space-y-4">
@@ -288,7 +288,7 @@ export default function VolunteerView() {
 
   if (currentStep === 5) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         <Card>
           <CardContent className="pt-6">
             <div className="text-center space-y-4">
