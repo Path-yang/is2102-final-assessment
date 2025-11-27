@@ -10,7 +10,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { FileText, Mail, Download } from "lucide-react"
 
 interface Step3_6Props {
-  onNext: () => void
+  onNext: (data?: any) => void
   formData?: any
 }
 
@@ -154,11 +154,18 @@ export default function Step3_6({ onNext, formData }: Step3_6Props) {
           </div>
 
           <div className="flex gap-4 pt-4">
-            <Button variant="outline" onClick={onNext} className="flex-1">
+            <Button 
+              variant="outline" 
+              onClick={() => onNext({ action: "download", format: exportFormat })} 
+              className="flex-1"
+            >
               <Download className="w-4 h-4 mr-2" />
               Download
             </Button>
-            <Button onClick={onNext} className="flex-1">
+            <Button 
+              onClick={() => onNext({ action: "email", format: exportFormat })} 
+              className="flex-1"
+            >
               <Mail className="w-4 h-4 mr-2" />
               Send Email
             </Button>

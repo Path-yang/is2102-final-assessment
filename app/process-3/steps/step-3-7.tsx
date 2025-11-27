@@ -9,6 +9,10 @@ interface Step3_7Props {
 }
 
 export default function Step3_7({ formData }: Step3_7Props) {
+  const action = formData?.action || "email"
+  const format = formData?.format || "pdf"
+  const formatLabel = format.charAt(0).toUpperCase() + format.slice(1)
+
   return (
     <div className="space-y-4 sm:space-y-6">
       <Card className="max-w-2xl mx-auto">
@@ -21,8 +25,17 @@ export default function Step3_7({ formData }: Step3_7Props) {
             </div>
 
             <div>
-              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">Report Generated Successfully!</h1>
-              <p className="text-gray-600">Your report has been processed and delivered</p>
+              {action === "download" ? (
+                <>
+                  <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">Download Successfully!</h1>
+                  <p className="text-gray-600">Your report has been downloaded successfully</p>
+                </>
+              ) : (
+                <>
+                  <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">Report Generated Successfully!</h1>
+                  <p className="text-gray-600">Your report has been processed and delivered</p>
+                </>
+              )}
             </div>
 
             <Card>
@@ -31,13 +44,21 @@ export default function Step3_7({ formData }: Step3_7Props) {
                   <div className="flex items-center gap-2">
                     <FileText className="w-5 h-5 text-gray-400" />
                     <span className="font-medium">Format:</span>
-                    <span className="text-gray-600">PDF</span>
+                    <span className="text-gray-600">{formatLabel}</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-gray-400" />
-                    <span className="font-medium">Action:</span>
-                    <span className="text-gray-600">Emailed to 5 recipients</span>
-                  </div>
+                  {action === "download" ? (
+                    <div className="flex items-center gap-2">
+                      <Download className="w-5 h-5 text-green-600" />
+                      <span className="font-medium">Status:</span>
+                      <span className="text-gray-600">Download completed</span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-gray-400" />
+                      <span className="font-medium">Action:</span>
+                      <span className="text-gray-600">Emailed to 5 recipients</span>
+                    </div>
+                  )}
                   <div className="flex items-center gap-2">
                     <Download className="w-5 h-5 text-gray-400" />
                     <span className="font-medium">File size:</span>
