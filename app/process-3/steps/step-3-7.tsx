@@ -56,15 +56,15 @@ export default function Step3_7({ formData }: Step3_7Props) {
               </p>
             </div>
 
-            <div className="flex gap-3">
-              <Button variant="outline" className="flex-1">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <Button variant="outline" className="flex-1 w-full sm:w-auto">
                 <Download className="w-4 h-4 mr-2" />
                 Download a Copy
               </Button>
-              <Button variant="outline" className="flex-1">
+              <Button variant="outline" className="flex-1 w-full sm:w-auto">
                 Generate Another Report
               </Button>
-              <Button className="flex-1">Back to Dashboard</Button>
+              <Button className="flex-1 w-full sm:w-auto">Back to Dashboard</Button>
             </div>
 
             <Card>
