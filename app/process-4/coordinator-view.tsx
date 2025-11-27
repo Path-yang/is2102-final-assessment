@@ -29,10 +29,6 @@ export default function CoordinatorView() {
               </div>
             </div>
 
-            <Button onClick={() => setCurrentStep(2)} size="lg" className="w-full">
-              Approve Hours
-            </Button>
-
             <div>
               <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3">Recent Submissions</h3>
               <div className="space-y-3">
@@ -119,11 +115,6 @@ export default function CoordinatorView() {
                   </div>
                 </div>
               ))}
-            </div>
-            <div className="mt-4">
-              <Button variant="outline" className="w-full">
-                Approve All Visible
-              </Button>
             </div>
           </CardContent>
         </Card>
