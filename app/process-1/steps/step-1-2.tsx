@@ -42,6 +42,27 @@ export default function Step1_2({ onNext, formData, setFormData }: Step1_2Props)
           <CardTitle className="text-lg sm:text-xl">Registration Form</CardTitle>
         </CardHeader>
         <CardContent className="p-4 sm:p-6 pt-0">
+          <div className="mb-4 sm:mb-6">
+            <Button 
+              type="button" 
+              variant="outline" 
+              className="w-full"
+              onClick={() => {
+                // Mock SingPass sign-in
+                alert("Sign in with SingPass - This would redirect to SingPass authentication")
+              }}
+            >
+              Sign in with SingPass
+            </Button>
+            <div className="relative my-4">
+              <div className="absolute inset-0 flex items-center">
+                <span className="w-full border-t" />
+              </div>
+              <div className="relative flex justify-center text-xs uppercase">
+                <span className="bg-white px-2 text-gray-500">Or continue with</span>
+              </div>
+            </div>
+          </div>
           <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
             <div>
               <Label htmlFor="fullName">Full Name *</Label>

@@ -126,8 +126,17 @@ export default function Step1_9({ onNext, formData }: Step1_9Props) {
               </p>
             </div>
 
+            <div className="p-3 sm:p-4 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-xs sm:text-sm font-medium text-red-800 mb-1">
+                ⚠️ Schedule Conflict Detected
+              </p>
+              <p className="text-xs text-red-700">
+                You have a conflicting schedule with other volunteer activities. Please reselect a time slot.
+              </p>
+            </div>
+
             <Button type="submit" className="w-full" size="lg">
-              Confirm Sign-up
+              Sign up
             </Button>
           </form>
         </CardContent>
