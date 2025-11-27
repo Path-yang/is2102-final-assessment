@@ -7,6 +7,8 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
+import { AlertTriangle, Calendar, Clock } from "lucide-react"
 
 interface Step1_9Props {
   onNext: (data: any) => void
@@ -18,6 +20,7 @@ export default function Step1_9({ onNext, formData }: Step1_9Props) {
   const [selectedShift, setSelectedShift] = useState("")
   const [specialRequirements, setSpecialRequirements] = useState("")
   const [emergencyContact, setEmergencyContact] = useState("")
+  const [showConflictDialog, setShowConflictDialog] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -134,7 +137,10 @@ export default function Step1_9({ onNext, formData }: Step1_9Props) {
       </Card>
 
       {/* Mock error message - for display only */}
-      <div className="p-3 sm:p-4 bg-red-50 border border-red-200 rounded-lg">
+      <div 
+        className="p-3 sm:p-4 bg-red-50 border border-red-200 rounded-lg cursor-pointer hover:bg-red-100 transition-colors"
+        onClick={() => setShowConflictDialog(true)}
+      >
         <p className="text-xs sm:text-sm font-medium text-red-800 mb-1">
           ⚠️ Schedule Conflict Detected
         </p>
@@ -142,6 +148,54 @@ export default function Step1_9({ onNext, formData }: Step1_9Props) {
           You have a conflicting schedule with other volunteer activities. Please reselect a time slot.
         </p>
       </div>
+
+      <Dialog open={showConflictDialog} onOpenChange={setShowConflictDialog}>
+        <DialogContent onClose={() => setShowConflictDialog(false)}>
+          <DialogHeader>
+            <div className="flex items-center gap-3 mb-2">
+              <AlertTriangle className="w-6 h-6 text-red-600" />
+              <DialogTitle>Schedule Conflict Detected</DialogTitle>
+            </div>
+            <DialogDescription>
+              You have a conflicting schedule with other volunteer activities. Please review the details below and reselect a time slot.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="mt-4 space-y-4">
+            <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-sm font-semibold text-red-900 mb-2">Conflicting Activities:</p>
+              <div className="space-y-2">
+                <div className="flex items-start gap-2">
+                  <Calendar className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-sm font-medium text-red-900">Community Garden Cleanup</p>
+                    <p className="text-xs text-red-700">Saturday, Dec 7, 2024 • 8:00 AM - 12:00 PM</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Clock className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-sm font-medium text-red-900">Selected Event</p>
+                    <p className="text-xs text-red-700">
+                      {event?.name || "Weekly Food Pantry Distribution"} • {event?.date || "Saturday, Dec 7, 2024"} • {event?.time || "9:00 AM - 1:00 PM"}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <p className="text-xs text-yellow-800">
+                <strong>Note:</strong> These events overlap in time. Please choose a different shift or cancel one of your existing commitments.
+              </p>
+            </div>
+            <Button 
+              onClick={() => setShowConflictDialog(false)} 
+              className="w-full"
+            >
+              I Understand
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }
