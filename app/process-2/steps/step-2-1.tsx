@@ -1,15 +1,20 @@
 "use client"
 
+import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Calendar, Users, Clock, MessageSquare } from "lucide-react"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
+import { Calendar, Users, Clock, MessageSquare, AlertTriangle, FileX, MapPin } from "lucide-react"
 
 interface Step2_1Props {
   onNext: () => void
 }
 
 export default function Step2_1({ onNext }: Step2_1Props) {
+  const [showIncompleteDialog, setShowIncompleteDialog] = useState(false)
+  const [showConflictDialog, setShowConflictDialog] = useState(false)
+
   return (
     <div className="space-y-4 sm:space-y-6">
       <div className="px-1">
@@ -106,6 +111,130 @@ export default function Step2_1({ onNext }: Step2_1Props) {
           </div>
         </CardContent>
       </Card>
+
+      {/* Error messages at bottom */}
+      <div className="space-y-2 sm:space-y-3">
+        {/* Incomplete Information Error */}
+        <div 
+          className="p-3 sm:p-4 bg-red-50 border border-red-200 rounded-lg cursor-pointer hover:bg-red-100 transition-colors"
+          onClick={() => setShowIncompleteDialog(true)}
+        >
+          <p className="text-xs sm:text-sm font-medium text-red-800 mb-1">
+            ⚠️ Incomplete Information
+          </p>
+          <p className="text-xs text-red-700">
+            Some required information is missing. Please review and complete all required fields.
+          </p>
+        </div>
+
+        {/* Conflicting Event Location Error */}
+        <div 
+          className="p-3 sm:p-4 bg-orange-50 border border-orange-200 rounded-lg cursor-pointer hover:bg-orange-100 transition-colors"
+          onClick={() => setShowConflictDialog(true)}
+        >
+          <p className="text-xs sm:text-sm font-medium text-orange-800 mb-1">
+            ⚠️ Conflicting Event Location
+          </p>
+          <p className="text-xs text-orange-700">
+            The selected location conflicts with another scheduled event. Click to review and override if needed.
+          </p>
+        </div>
+      </div>
+
+      {/* Incomplete Information Dialog */}
+      <Dialog open={showIncompleteDialog} onOpenChange={setShowIncompleteDialog}>
+        <DialogContent onClose={() => setShowIncompleteDialog(false)}>
+          <DialogHeader>
+            <div className="flex items-center gap-3 mb-2">
+              <FileX className="w-6 h-6 text-red-600" />
+              <DialogTitle>Incomplete Information</DialogTitle>
+            </div>
+            <DialogDescription>
+              Some required information is missing from your event setup. Please review and complete all required fields before proceeding.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="mt-4 space-y-4">
+            <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-sm font-semibold text-red-900 mb-2">Missing Required Fields:</p>
+              <ul className="space-y-1 text-sm text-red-800 list-disc list-inside">
+                <li>Event description</li>
+                <li>Volunteer capacity for at least one shift</li>
+                <li>Emergency contact information</li>
+                <li>Required skills or qualifications</li>
+              </ul>
+            </div>
+            <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <p className="text-xs text-yellow-800">
+                <strong>Note:</strong> You cannot publish this event until all required fields are completed.
+              </p>
+            </div>
+            <Button 
+              onClick={() => setShowIncompleteDialog(false)} 
+              className="w-full"
+            >
+              I Understand
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Conflicting Event Location Dialog */}
+      <Dialog open={showConflictDialog} onOpenChange={setShowConflictDialog}>
+        <DialogContent onClose={() => setShowConflictDialog(false)}>
+          <DialogHeader>
+            <div className="flex items-center gap-3 mb-2">
+              <MapPin className="w-6 h-6 text-orange-600" />
+              <DialogTitle>Conflicting Event Location</DialogTitle>
+            </div>
+            <DialogDescription>
+              The selected location conflicts with another scheduled event. Please review the details below.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="mt-4 space-y-4">
+            <div className="p-4 bg-orange-50 border border-orange-200 rounded-lg">
+              <p className="text-sm font-semibold text-orange-900 mb-3">Conflicting Events:</p>
+              <div className="space-y-3">
+                <div className="p-3 bg-white rounded border border-orange-200">
+                  <p className="text-sm font-medium text-orange-900 mb-1">Your Event</p>
+                  <p className="text-xs text-orange-700">Food Pantry Distribution</p>
+                  <p className="text-xs text-orange-700">Saturday, Dec 7, 2024 • 9:00 AM - 1:00 PM</p>
+                  <p className="text-xs text-orange-700">Heartfelt Hands Community Center</p>
+                </div>
+                <div className="p-3 bg-white rounded border border-orange-200">
+                  <p className="text-sm font-medium text-orange-900 mb-1">Existing Event</p>
+                  <p className="text-xs text-orange-700">Community Garden Cleanup</p>
+                  <p className="text-xs text-orange-700">Saturday, Dec 7, 2024 • 8:00 AM - 12:00 PM</p>
+                  <p className="text-xs text-orange-700">Heartfelt Hands Community Center</p>
+                </div>
+              </div>
+            </div>
+            <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <p className="text-xs text-yellow-800">
+                <strong>Warning:</strong> Both events are scheduled at the same location with overlapping times. This may cause logistical issues.
+              </p>
+            </div>
+            <div className="flex gap-2">
+              <Button 
+                variant="outline"
+                onClick={() => setShowConflictDialog(false)} 
+                className="flex-1"
+              >
+                Cancel
+              </Button>
+              <Button 
+                onClick={() => {
+                  alert("Override confirmed - Event will be created despite location conflict")
+                  setShowConflictDialog(false)
+                }}
+                className="flex-1"
+                variant="destructive"
+              >
+                Override & Continue
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }
