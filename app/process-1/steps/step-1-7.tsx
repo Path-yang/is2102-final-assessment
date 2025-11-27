@@ -22,12 +22,80 @@ export default function Step1_7({ onNext, formData }: Step1_7Props) {
     location: "",
     timeOfDay: "",
   })
+  const [showRecommended, setShowRecommended] = useState(formData?.showRecommended ?? false)
+
+  const userSkills = formData?.skills || []
+  const userInterests = formData?.interests || []
+
+  // Filter events based on "Recommended for You" toggle
+  const getFilteredEvents = () => {
+    if (!showRecommended) {
+      return mockEvents // Show all events
+    }
+
+    // Filter events based on user's interests and skills
+    return mockEvents.filter((event) => {
+      // Match by interest (program matches user's interests)
+      const matchesInterest = userInterests.some(
+        (interest: string) => 
+          event.program.toLowerCase().includes(interest.toLowerCase()) ||
+          interest.toLowerCase().includes(event.program.toLowerCase())
+      )
+
+      // Match by skills (event requires skills that user has)
+      const matchesSkills = event.requirements?.skillsNeeded?.some((requiredSkill: string) =>
+        userSkills.some((userSkill: string) =>
+          userSkill.toLowerCase().includes(requiredSkill.toLowerCase()) ||
+          requiredSkill.toLowerCase().includes(userSkill.toLowerCase())
+        )
+      ) || event.shifts.some((shift) =>
+        shift.requiredSkills.some((requiredSkill: string) =>
+          userSkills.some((userSkill: string) =>
+            userSkill.toLowerCase().includes(requiredSkill.toLowerCase()) ||
+            requiredSkill.toLowerCase().includes(userSkill.toLowerCase())
+          )
+        )
+      )
+
+      // If no skills required, still show if interest matches
+      const hasNoSkillRequirement = 
+        (!event.requirements?.skillsNeeded || event.requirements.skillsNeeded.length === 0) &&
+        event.shifts.every((shift) => !shift.requiredSkills || shift.requiredSkills.length === 0)
+
+      return matchesInterest || matchesSkills || (hasNoSkillRequirement && matchesInterest)
+    })
+  }
+
+  const filteredEvents = getFilteredEvents()
 
   return (
     <div className="space-y-4 sm:space-y-6">
       <div className="px-1">
-        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">Find Opportunities</h1>
-        <p className="text-sm sm:text-base text-gray-600">Discover volunteer opportunities that match your interests</p>
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">
+          {showRecommended ? "Recommended for You" : "Find Opportunities"}
+        </h1>
+        <p className="text-sm sm:text-base text-gray-600">
+          {showRecommended 
+            ? "Events matched to your skills and interests" 
+            : "Discover volunteer opportunities that match your interests"}
+        </p>
+      </div>
+
+      {/* Filter Toggle */}
+      <div className="flex items-center justify-between p-3 sm:p-4 bg-gray-50 rounded-lg border">
+        <div className="flex items-center gap-2">
+          <span className="text-sm sm:text-base font-medium">
+            {showRecommended ? "Showing: Recommended Events" : "Showing: All Events"}
+          </span>
+        </div>
+        <Button
+          variant={showRecommended ? "default" : "outline"}
+          size="sm"
+          onClick={() => setShowRecommended(!showRecommended)}
+          className="text-xs sm:text-sm"
+        >
+          {showRecommended ? "Show All Events" : "Show Recommended"}
+        </Button>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -98,7 +166,9 @@ export default function Step1_7({ onNext, formData }: Step1_7Props) {
 
         <div className="lg:col-span-3 space-y-3 sm:space-y-4">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0">
-            <h2 className="text-lg sm:text-xl font-semibold">Recommended for You</h2>
+            <h2 className="text-lg sm:text-xl font-semibold">
+              {showRecommended ? "Recommended Events" : "All Events"} ({filteredEvents.length})
+            </h2>
             <div className="flex gap-1.5 sm:gap-2 w-full sm:w-auto">
               <Button variant="outline" size="sm" className="flex-1 sm:flex-none text-xs sm:text-sm">List</Button>
               <Button variant="outline" size="sm" className="flex-1 sm:flex-none text-xs sm:text-sm">Calendar</Button>
@@ -106,7 +176,30 @@ export default function Step1_7({ onNext, formData }: Step1_7Props) {
             </div>
           </div>
 
-          {mockEvents.map((event) => (
+          {filteredEvents.length === 0 ? (
+            <Card>
+              <CardContent className="pt-6 p-6">
+                <div className="text-center py-8">
+                  <p className="text-sm sm:text-base text-gray-600 mb-2">
+                    {showRecommended 
+                      ? "No recommended events found based on your profile." 
+                      : "No events found matching your filters."}
+                  </p>
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      // Reset to show all events
+                      window.location.reload()
+                    }}
+                    className="mt-4"
+                  >
+                    {showRecommended ? "View All Events" : "Clear Filters"}
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ) : (
+            filteredEvents.map((event) => (
             <Card
               key={event.id}
               className="cursor-pointer hover:shadow-md transition-shadow"
@@ -134,7 +227,8 @@ export default function Step1_7({ onNext, formData }: Step1_7Props) {
                 </div>
               </CardContent>
             </Card>
-          ))}
+            ))
+          )}
         </div>
       </div>
     </div>

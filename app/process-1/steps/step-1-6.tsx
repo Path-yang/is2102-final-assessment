@@ -40,9 +40,17 @@ export default function Step1_6({ onNext, formData }: Step1_6Props) {
             </div>
           </div>
 
-          <div>
-            <Button onClick={onNext} size="lg" className="w-full">
-              Find Opportunities
+          <div className="space-y-2 sm:space-y-3">
+            <Button onClick={() => onNext({ showRecommended: false })} size="lg" className="w-full">
+              Browse All Events
+            </Button>
+            <Button 
+              onClick={() => onNext({ showRecommended: true })} 
+              variant="outline" 
+              size="lg" 
+              className="w-full"
+            >
+              Recommended for You
             </Button>
           </div>
 
@@ -78,10 +86,18 @@ export default function Step1_6({ onNext, formData }: Step1_6Props) {
 
           <div>
             <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3">Recommended for You</h3>
-            <div className="text-xs sm:text-sm text-gray-500">
+            <div className="text-xs sm:text-sm text-gray-500 mb-2">
               Based on your skills and interests, we'll show you personalized
               opportunities here.
             </div>
+            <Button 
+              onClick={() => onNext({ showRecommended: true })} 
+              variant="outline" 
+              size="sm" 
+              className="w-full sm:w-auto"
+            >
+              View Recommended Events
+            </Button>
           </div>
         </CardContent>
       </Card>

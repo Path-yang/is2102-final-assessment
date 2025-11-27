@@ -21,6 +21,11 @@ export default function Process1() {
   const handleNext = (data?: any) => {
     if (data) {
       setFormData((prev: any) => ({ ...prev, ...data }))
+      // If navigating to step 7 with showRecommended flag, ensure we go to step 7
+      if (data.showRecommended !== undefined) {
+        setCurrentStep(7)
+        return
+      }
     }
     setCurrentStep((prev) => Math.min(prev + 1, 11))
   }
