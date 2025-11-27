@@ -6,7 +6,7 @@ import { CheckCircle2, Clock } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 
 interface Step1_6Props {
-  onNext: () => void
+  onNext: (data?: any) => void
   formData?: any
 }
 
