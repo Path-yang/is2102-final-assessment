@@ -52,7 +52,7 @@ export default function Step3_3({ onNext, onBack, formData, setFormData }: Step3
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setFormData({ ...formData, ...localData })
+    setFormData?.({ ...formData, ...localData })
     onNext(localData)
   }
 

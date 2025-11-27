@@ -77,7 +77,7 @@ export default function Step2_4({ onNext, onBack, formData, setFormData }: Step2
       (sum: number, shift: any) => sum + shift.volunteersNeeded,
       0
     )
-    setFormData({ ...formData, shifts, totalVolunteers })
+    setFormData?.({ ...formData, shifts, totalVolunteers })
     onNext({ shifts, totalVolunteers })
   }
 

@@ -43,7 +43,7 @@ export default function Step2_5({ onNext, onBack, formData, setFormData }: Step2
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setFormData({ ...formData, ...localData })
+    setFormData?.({ ...formData, ...localData })
     onNext(localData)
   }
 

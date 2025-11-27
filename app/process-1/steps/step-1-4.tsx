@@ -49,7 +49,7 @@ export default function Step1_4({ onNext, onBack, formData, setFormData }: Step1
       alert("Please accept the terms and conditions")
       return
     }
-    setFormData({ ...formData, ...localData })
+    setFormData?.({ ...formData, ...localData })
     onNext(localData)
   }
 

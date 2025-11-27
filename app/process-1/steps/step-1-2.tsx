@@ -24,7 +24,7 @@ export default function Step1_2({ onNext, formData, setFormData }: Step1_2Props)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setFormData(localData)
+    setFormData?.(localData)
     onNext(localData)
   }
 
