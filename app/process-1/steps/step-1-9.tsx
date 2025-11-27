@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
-import { AlertTriangle, Calendar, Clock } from "lucide-react"
+import { AlertTriangle, Calendar, Clock, CheckCircle2 } from "lucide-react"
 
 interface Step1_9Props {
   onNext: (data: any) => void
@@ -21,6 +21,7 @@ export default function Step1_9({ onNext, formData }: Step1_9Props) {
   const [specialRequirements, setSpecialRequirements] = useState("")
   const [emergencyContact, setEmergencyContact] = useState("")
   const [showConflictDialog, setShowConflictDialog] = useState(false)
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -28,6 +29,11 @@ export default function Step1_9({ onNext, formData }: Step1_9Props) {
       alert("Please select a shift")
       return
     }
+    setShowConfirmDialog(true)
+  }
+
+  const handleConfirmSignup = () => {
+    setShowConfirmDialog(false)
     onNext({
       selectedShift,
       specialRequirements,
@@ -193,6 +199,48 @@ export default function Step1_9({ onNext, formData }: Step1_9Props) {
             >
               I Understand
             </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
+        <DialogContent onClose={() => setShowConfirmDialog(false)}>
+          <DialogHeader>
+            <div className="flex items-center gap-3 mb-2">
+              <CheckCircle2 className="w-6 h-6 text-primary" />
+              <DialogTitle>Are you sure you want to sign up?</DialogTitle>
+            </div>
+            <DialogDescription>
+              Please confirm that you want to sign up for this event. You will receive a confirmation email shortly.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="mt-4 space-y-4">
+            <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
+              <p className="text-sm font-semibold mb-2">Event Details:</p>
+              <div className="space-y-1 text-sm text-gray-700">
+                <p><strong>Event:</strong> {event?.name || "Weekly Food Pantry Distribution"}</p>
+                <p><strong>Date & Time:</strong> {event?.date || "Saturday, Dec 7, 2024"} • {event?.time || "9:00 AM - 1:00 PM"}</p>
+                <p><strong>Location:</strong> {event?.location || "Heartfelt Hands Community Center"}</p>
+                {selectedShift && event?.shifts?.find((s: any) => s.id === selectedShift) && (
+                  <p><strong>Selected Shift:</strong> {event.shifts.find((s: any) => s.id === selectedShift).roleName}</p>
+                )}
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <Button 
+                variant="outline"
+                onClick={() => setShowConfirmDialog(false)} 
+                className="flex-1"
+              >
+                Cancel
+              </Button>
+              <Button 
+                onClick={handleConfirmSignup} 
+                className="flex-1"
+              >
+                Yes, Sign Up
+              </Button>
+            </div>
           </div>
         </DialogContent>
       </Dialog>
