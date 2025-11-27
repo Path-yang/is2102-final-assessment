@@ -31,17 +31,28 @@ RadioGroup.displayName = "RadioGroup"
 
 interface RadioGroupItemProps extends React.InputHTMLAttributes<HTMLInputElement> {
   value: string
+  checked?: boolean
+  onCheckedChange?: (value: string) => void
 }
 
 const RadioGroupItem = React.forwardRef<HTMLInputElement, RadioGroupItemProps>(
-  ({ className, value, checked, onCheckedChange, ...props }, ref) => {
+  ({ className, value, checked, onCheckedChange, onChange, ...props }, ref) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (onCheckedChange) {
+        onCheckedChange(e.target.value)
+      }
+      if (onChange) {
+        onChange(e)
+      }
+    }
+
     return (
       <input
         ref={ref}
         type="radio"
         value={value}
         checked={checked}
-        onChange={(e) => onCheckedChange?.(e.target.value)}
+        onChange={handleChange}
         className={cn("w-4 h-4", className)}
         {...props}
       />
