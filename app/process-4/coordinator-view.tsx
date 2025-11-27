@@ -48,7 +48,7 @@ export default function CoordinatorView() {
                     </div>
                     <div className="px-2.5 sm:px-3 pb-2.5 sm:pb-3">
                       <Button 
-                        onClick={() => setCurrentStep(2)} 
+                        onClick={() => setCurrentStep(3)} 
                         size="sm" 
                         className="w-full sm:w-auto"
                       >
