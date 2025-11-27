@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
+import { AlertTriangle, Calendar } from "lucide-react"
 import { mockPrograms } from "@/lib/mock-data"
 
 interface Step3_3Props {
@@ -16,6 +18,7 @@ interface Step3_3Props {
 }
 
 export default function Step3_3({ onNext, onBack, formData, setFormData }: Step3_3Props) {
+  const [showInsufficientDialog, setShowInsufficientDialog] = useState(false)
   const [localData, setLocalData] = useState({
     dateRange: formData.dateRange || "this-year",
     startDate: formData.startDate || "2024-01-01",
@@ -214,6 +217,67 @@ export default function Step3_3({ onNext, onBack, formData, setFormData }: Step3
           </form>
         </CardContent>
       </Card>
+
+      {/* Insufficient Information Error - Mock error at bottom */}
+      <div 
+        className="p-3 sm:p-4 bg-red-50 border border-red-200 rounded-lg cursor-pointer hover:bg-red-100 transition-colors"
+        onClick={() => setShowInsufficientDialog(true)}
+      >
+        <p className="text-xs sm:text-sm font-medium text-red-800 mb-1">
+          ⚠️ Insufficient Information
+        </p>
+        <p className="text-xs text-red-700">
+          The year hasn't ended yet. Year-end reports can only be generated after the year has concluded.
+        </p>
+      </div>
+
+      {/* Insufficient Information Dialog */}
+      <Dialog open={showInsufficientDialog} onOpenChange={setShowInsufficientDialog}>
+        <DialogContent onClose={() => setShowInsufficientDialog(false)}>
+          <DialogHeader>
+            <div className="flex items-center gap-3 mb-2">
+              <AlertTriangle className="w-6 h-6 text-red-600" />
+              <DialogTitle>Insufficient Information</DialogTitle>
+            </div>
+            <DialogDescription>
+              The year hasn't ended yet. Year-end reports require complete annual data to be generated accurately.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="mt-4 space-y-4">
+            <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-sm font-semibold text-red-900 mb-2">Issue Details:</p>
+              <div className="space-y-2 text-sm text-red-800">
+                <div className="flex items-start gap-2">
+                  <Calendar className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium">Current Date: December 15, 2024</p>
+                    <p className="text-xs text-red-700 mt-1">Year-end reports are typically generated after December 31st</p>
+                  </div>
+                </div>
+                <div className="mt-3 pt-3 border-t border-red-200">
+                  <p className="font-medium mb-1">Why this matters:</p>
+                  <ul className="list-disc list-inside text-xs text-red-700 space-y-1">
+                    <li>Year-end reports require complete annual data</li>
+                    <li>Final metrics and statistics are only available after year completion</li>
+                    <li>Some data may still be pending or incomplete</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <p className="text-xs text-yellow-800">
+                <strong>Note:</strong> You can generate a partial year report or wait until after December 31st to generate the complete year-end report.
+              </p>
+            </div>
+            <Button 
+              onClick={() => setShowInsufficientDialog(false)} 
+              className="w-full"
+            >
+              I Understand
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }
