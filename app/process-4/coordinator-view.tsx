@@ -12,7 +12,7 @@ import { CheckCircle2, X, AlertCircle, Clock } from "lucide-react"
 
 export default function CoordinatorView() {
   const [currentStep, setCurrentStep] = useState(1)
-  const [showRejectModal, setShowRejectModal] = useState(false)
+  const [rejectionReason, setRejectionReason] = useState("")
 
   if (currentStep === 1) {
     return (
@@ -213,13 +213,13 @@ export default function CoordinatorView() {
                 Reject
               </Button>
               <Button
-                onClick={() => setCurrentStep(5)}
+                onClick={() => setCurrentStep(6)}
                 variant="outline"
                 className="flex-1"
               >
                 Request Clarification
               </Button>
-              <Button onClick={() => setCurrentStep(4)} className="flex-1">
+              <Button onClick={() => setCurrentStep(5)} className="flex-1">
                 <CheckCircle2 className="w-4 h-4 mr-2" />
                 Approve
               </Button>
@@ -230,7 +230,80 @@ export default function CoordinatorView() {
     )
   }
 
+  // Step 4: Rejection Reason Input
   if (currentStep === 4) {
+    return (
+      <div className="space-y-4 sm:space-y-6">
+        <div>
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">Reject Hour Entry</h1>
+          <p className="text-gray-600">Please provide a reason for rejecting this submission</p>
+        </div>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Volunteer Information</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-2">
+              <p className="font-semibold">John Doe</p>
+              <p className="text-sm text-gray-600">Food Pantry Distribution • Dec 2, 2024 • 4.5 hours</p>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Rejection Reason *</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div>
+              <Label htmlFor="rejectionReason">Please explain why this submission is being rejected</Label>
+              <Textarea
+                id="rejectionReason"
+                rows={5}
+                placeholder="e.g., Hours do not match event duration, volunteer was not checked in, incorrect event selected..."
+                value={rejectionReason}
+                onChange={(e) => setRejectionReason(e.target.value)}
+                className="mt-2"
+                required
+              />
+            </div>
+            <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <p className="text-xs text-yellow-800">
+                <strong>Note:</strong> The volunteer will receive this rejection reason via email notification.
+              </p>
+            </div>
+            <div className="flex gap-3 pt-2">
+              <Button
+                variant="outline"
+                onClick={() => setCurrentStep(3)}
+                className="flex-1"
+              >
+                Cancel
+              </Button>
+              <Button
+                onClick={() => {
+                  if (rejectionReason.trim()) {
+                    setCurrentStep(7)
+                  } else {
+                    alert("Please provide a rejection reason")
+                  }
+                }}
+                variant="destructive"
+                className="flex-1"
+              >
+                <X className="w-4 h-4 mr-2" />
+                Confirm Rejection
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    )
+  }
+
+  // Step 5: Approval Success
+  if (currentStep === 5) {
     return (
       <div className="space-y-4 sm:space-y-6">
         <Card className="max-w-md mx-auto">
@@ -244,6 +317,61 @@ export default function CoordinatorView() {
               <h1 className="text-2xl font-bold">Hours Approved</h1>
               <p className="text-gray-600">Volunteer has been notified</p>
               <Button onClick={() => setCurrentStep(2)} className="w-full">
+                Next Pending Approval
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    )
+  }
+
+  // Step 6: Request Clarification
+  if (currentStep === 6) {
+    return (
+      <div className="space-y-4 sm:space-y-6">
+        <Card className="max-w-md mx-auto">
+          <CardContent className="pt-6">
+            <div className="text-center space-y-4">
+              <div className="flex justify-center">
+                <div className="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center">
+                  <Clock className="w-10 h-10 text-blue-600" />
+                </div>
+              </div>
+              <h1 className="text-2xl font-bold">Clarification Requested</h1>
+              <p className="text-gray-600">The volunteer has been notified to provide additional information</p>
+              <Button onClick={() => setCurrentStep(2)} className="w-full">
+                Back to Queue
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    )
+  }
+
+  // Step 7: Rejection Success
+  if (currentStep === 7) {
+    return (
+      <div className="space-y-4 sm:space-y-6">
+        <Card className="max-w-md mx-auto">
+          <CardContent className="pt-6">
+            <div className="text-center space-y-4">
+              <div className="flex justify-center">
+                <div className="w-20 h-20 rounded-full bg-red-100 flex items-center justify-center">
+                  <X className="w-10 h-10 text-red-600" />
+                </div>
+              </div>
+              <h1 className="text-2xl font-bold">Hours Rejected</h1>
+              <p className="text-gray-600">The volunteer has been notified with your rejection reason</p>
+              <div className="p-3 bg-gray-50 border border-gray-200 rounded-lg text-left">
+                <p className="text-xs font-medium text-gray-700 mb-1">Rejection Reason:</p>
+                <p className="text-sm text-gray-600">{rejectionReason}</p>
+              </div>
+              <Button onClick={() => {
+                setRejectionReason("")
+                setCurrentStep(2)
+              }} className="w-full">
                 Next Pending Approval
               </Button>
             </div>
