@@ -11,9 +11,9 @@ import { mockSkills, mockInterests, mockLanguages } from "@/lib/mock-data"
 
 interface Step1_3Props {
   onNext: (data: any) => void
-  onBack: () => void
-  formData: any
-  setFormData: (data: any) => void
+  onBack?: () => void
+  formData?: any
+  setFormData?: (data: any) => void
 }
 
 export default function Step1_3({ onNext, onBack, formData, setFormData }: Step1_3Props) {

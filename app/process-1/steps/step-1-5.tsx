@@ -6,7 +6,7 @@ import { Mail, CheckCircle2 } from "lucide-react"
 
 interface Step1_5Props {
   onNext: () => void
-  formData: any
+  formData?: any
 }
 
 export default function Step1_5({ onNext, formData }: Step1_5Props) {

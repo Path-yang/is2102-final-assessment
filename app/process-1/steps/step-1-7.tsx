@@ -11,7 +11,7 @@ import { mockEvents } from "@/lib/mock-data"
 
 interface Step1_7Props {
   onNext: (data: any) => void
-  formData: any
+  formData?: any
 }
 
 export default function Step1_7({ onNext, formData }: Step1_7Props) {

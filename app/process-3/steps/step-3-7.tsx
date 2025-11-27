@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { CheckCircle2, Download, FileText } from "lucide-react"
 
 interface Step3_7Props {
-  formData: any
+  formData?: any
 }
 
 export default function Step3_7({ formData }: Step3_7Props) {

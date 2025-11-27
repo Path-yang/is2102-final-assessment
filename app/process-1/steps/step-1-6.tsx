@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge"
 
 interface Step1_6Props {
   onNext: () => void
-  formData: any
+  formData?: any
 }
 
 export default function Step1_6({ onNext, formData }: Step1_6Props) {

@@ -6,7 +6,7 @@ import { CheckCircle2, QrCode } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 
 interface Step2_7Props {
-  formData: any
+  formData?: any
 }
 
 export default function Step2_7({ formData }: Step2_7Props) {

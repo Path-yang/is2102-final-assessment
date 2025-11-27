@@ -10,7 +10,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
 interface Step1_9Props {
   onNext: (data: any) => void
-  formData: any
+  formData?: any
 }
 
 export default function Step1_9({ onNext, formData }: Step1_9Props) {

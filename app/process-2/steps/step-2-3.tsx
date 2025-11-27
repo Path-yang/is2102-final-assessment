@@ -11,9 +11,9 @@ import { ProgressIndicator } from "@/components/shared/ProgressIndicator"
 
 interface Step2_3Props {
   onNext: (data: any) => void
-  onBack: () => void
-  formData: any
-  setFormData: (data: any) => void
+  onBack?: () => void
+  formData?: any
+  setFormData?: (data: any) => void
 }
 
 const daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]

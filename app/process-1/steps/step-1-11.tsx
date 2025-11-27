@@ -6,7 +6,7 @@ import { CheckCircle2, Clock, Calendar } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 
 interface Step1_11Props {
-  formData: any
+  formData?: any
 }
 
 export default function Step1_11({ formData }: Step1_11Props) {

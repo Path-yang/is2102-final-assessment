@@ -11,7 +11,7 @@ import { FileText, Mail, Download } from "lucide-react"
 
 interface Step3_6Props {
   onNext: () => void
-  formData: any
+  formData?: any
 }
 
 export default function Step3_6({ onNext, formData }: Step3_6Props) {

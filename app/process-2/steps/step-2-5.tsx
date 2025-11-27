@@ -11,9 +11,9 @@ import { ProgressIndicator } from "@/components/shared/ProgressIndicator"
 
 interface Step2_5Props {
   onNext: (data: any) => void
-  onBack: () => void
-  formData: any
-  setFormData: (data: any) => void
+  onBack?: () => void
+  formData?: any
+  setFormData?: (data: any) => void
 }
 
 export default function Step2_5({ onNext, onBack, formData, setFormData }: Step2_5Props) {

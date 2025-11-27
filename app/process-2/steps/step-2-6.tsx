@@ -8,8 +8,8 @@ import { Edit } from "lucide-react"
 
 interface Step2_6Props {
   onNext: () => void
-  onBack: () => void
-  formData: any
+  onBack?: () => void
+  formData?: any
 }
 
 export default function Step2_6({ onNext, onBack, formData }: Step2_6Props) {

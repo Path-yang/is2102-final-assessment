@@ -10,9 +10,9 @@ import { mockPrograms } from "@/lib/mock-data"
 
 interface Step3_3Props {
   onNext: (data: any) => void
-  onBack: () => void
-  formData: any
-  setFormData: (data: any) => void
+  onBack?: () => void
+  formData?: any
+  setFormData?: (data: any) => void
 }
 
 export default function Step3_3({ onNext, onBack, formData, setFormData }: Step3_3Props) {

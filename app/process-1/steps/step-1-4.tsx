@@ -10,9 +10,9 @@ import { ProgressIndicator } from "@/components/shared/ProgressIndicator"
 
 interface Step1_4Props {
   onNext: (data: any) => void
-  onBack: () => void
-  formData: any
-  setFormData: (data: any) => void
+  onBack?: () => void
+  formData?: any
+  setFormData?: (data: any) => void
 }
 
 const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]

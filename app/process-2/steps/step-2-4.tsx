@@ -12,9 +12,9 @@ import { Plus, Trash2 } from "lucide-react"
 
 interface Step2_4Props {
   onNext: (data: any) => void
-  onBack: () => void
-  formData: any
-  setFormData: (data: any) => void
+  onBack?: () => void
+  formData?: any
+  setFormData?: (data: any) => void
 }
 
 export default function Step2_4({ onNext, onBack, formData, setFormData }: Step2_4Props) {

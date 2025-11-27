@@ -9,8 +9,8 @@ import { ProgressIndicator } from "@/components/shared/ProgressIndicator"
 
 interface Step1_2Props {
   onNext: (data: any) => void
-  formData: any
-  setFormData: (data: any) => void
+  formData?: any
+  setFormData?: (data: any) => void
 }
 
 export default function Step1_2({ onNext, formData, setFormData }: Step1_2Props) {

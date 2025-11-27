@@ -7,7 +7,7 @@ import { MapPin, Calendar, Clock, Users, User } from "lucide-react"
 
 interface Step1_8Props {
   onNext: (data: any) => void
-  formData: any
+  formData?: any
 }
 
 export default function Step1_8({ onNext, formData }: Step1_8Props) {
