@@ -13,17 +13,17 @@ interface Step3_5Props {
 export default function Step3_5({ onNext, formData }: Step3_5Props) {
   return (
     <div className="space-y-4 sm:space-y-6">
-      <div className="flex justify-between items-center">
-        <div>
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">Year-End Impact Report 2024 - Preview</h1>
-          <p className="text-gray-600">Review your report before exporting</p>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0 px-1">
+        <div className="flex-1 min-w-0">
+          <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2 break-words">Year-End Impact Report 2024 - Preview</h1>
+          <p className="text-xs sm:text-sm text-gray-600">Review your report before exporting</p>
         </div>
-        <div className="flex gap-2">
-          <Button variant="outline" size="sm">
-            <RefreshCw className="w-4 h-4 mr-2" />
+        <div className="flex gap-1.5 sm:gap-2 w-full sm:w-auto">
+          <Button variant="outline" size="sm" className="flex-1 sm:flex-none text-xs sm:text-sm">
+            <RefreshCw className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
             Refresh
           </Button>
-          <Button variant="outline" size="sm">
+          <Button variant="outline" size="sm" className="flex-1 sm:flex-none text-xs sm:text-sm">
             Edit Configuration
           </Button>
         </div>
@@ -44,7 +44,7 @@ export default function Step3_5({ onNext, formData }: Step3_5Props) {
           </CardContent>
         </Card>
 
-        <div className="grid grid-cols-2 md:grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 sm:gap-4">
           {[
             { label: "Active Volunteers", value: "342", change: "+15% YoY" },
             { label: "Hours Contributed", value: "8,547", change: "+23% YoY" },

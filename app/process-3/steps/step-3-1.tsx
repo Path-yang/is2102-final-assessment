@@ -11,12 +11,12 @@ interface Step3_1Props {
 export default function Step3_1({ onNext }: Step3_1Props) {
   return (
     <div className="space-y-4 sm:space-y-6">
-      <div>
-        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">Organization Administrator Portal</h1>
-        <p className="text-gray-600">Welcome, Admin User</p>
+      <div className="px-1">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">Organization Administrator Portal</h1>
+        <p className="text-sm sm:text-base text-gray-600">Welcome, Admin User</p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4">
         <Card>
           <CardContent className="pt-6">
             <div className="text-center">
@@ -55,49 +55,49 @@ export default function Step3_1({ onNext }: Step3_1Props) {
         </Card>
       </div>
 
-      <div className="flex gap-3">
-        <Button onClick={onNext} size="lg" className="flex-1">
+      <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+        <Button onClick={onNext} size="lg" className="flex-1 w-full sm:w-auto">
           Generate Report
         </Button>
-        <Button variant="outline" size="lg">Manage Volunteers</Button>
-        <Button variant="outline" size="lg">Manage Programs</Button>
-        <Button variant="outline" size="lg">Fundraising Campaigns</Button>
+        <Button variant="outline" size="lg" className="flex-1 sm:flex-none">Manage Volunteers</Button>
+        <Button variant="outline" size="lg" className="flex-1 sm:flex-none">Manage Programs</Button>
+        <Button variant="outline" size="lg" className="flex-1 sm:flex-none">Fundraising Campaigns</Button>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 sm:p-6>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         <Card>
-          <CardHeader>
-            <CardTitle>Volunteer Hours Trend</CardTitle>
+          <CardHeader className="p-4 sm:p-6">
+            <CardTitle className="text-base sm:text-lg">Volunteer Hours Trend</CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="h-48 bg-gray-100 rounded-lg flex items-center justify-center">
-              <span className="text-gray-500">Line Chart Preview</span>
+          <CardContent className="p-4 sm:p-6 pt-0">
+            <div className="h-32 sm:h-48 bg-gray-100 rounded-lg flex items-center justify-center">
+              <span className="text-xs sm:text-sm text-gray-500">Line Chart Preview</span>
             </div>
           </CardContent>
         </Card>
         <Card>
-          <CardHeader>
-            <CardTitle>Donations by Month</CardTitle>
+          <CardHeader className="p-4 sm:p-6">
+            <CardTitle className="text-base sm:text-lg">Donations by Month</CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="h-48 bg-gray-100 rounded-lg flex items-center justify-center">
-              <span className="text-gray-500">Bar Chart Preview</span>
+          <CardContent className="p-4 sm:p-6 pt-0">
+            <div className="h-32 sm:h-48 bg-gray-100 rounded-lg flex items-center justify-center">
+              <span className="text-xs sm:text-sm text-gray-500">Bar Chart Preview</span>
             </div>
           </CardContent>
         </Card>
       </div>
 
       <Card>
-        <CardHeader>
-          <CardTitle>Alerts</CardTitle>
+        <CardHeader className="p-4 sm:p-6">
+          <CardTitle className="text-base sm:text-lg">Alerts</CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-4 sm:p-6 pt-0">
           <div className="space-y-2">
-            <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-              <p className="text-sm font-medium">3 volunteers pending approval</p>
+            <div className="p-2.5 sm:p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <p className="text-xs sm:text-sm font-medium">3 volunteers pending approval</p>
             </div>
-            <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
-              <p className="text-sm font-medium">Year-end report due for board meeting</p>
+            <div className="p-2.5 sm:p-3 bg-blue-50 border border-blue-200 rounded-lg">
+              <p className="text-xs sm:text-sm font-medium">Year-end report due for board meeting</p>
             </div>
           </div>
         </CardContent>
