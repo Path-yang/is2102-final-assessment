@@ -15,20 +15,20 @@ export function ProcessCard({ number, title, description, actors, href }: Proces
   return (
     <Link href={href}>
       <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer">
-        <CardHeader>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">
+        <CardHeader className="p-4 sm:p-6">
+          <div className="flex items-start justify-between gap-2">
+            <div className="flex items-start gap-2 sm:gap-3 flex-1 min-w-0">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm sm:text-base flex-shrink-0">
                 {number}
               </div>
-              <CardTitle className="text-xl">{title}</CardTitle>
+              <CardTitle className="text-base sm:text-lg md:text-xl leading-tight break-words">{title}</CardTitle>
             </div>
-            <ArrowRight className="w-5 h-5 text-muted-foreground" />
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground flex-shrink-0 mt-1" />
           </div>
-          <CardDescription className="mt-2">{description}</CardDescription>
+          <CardDescription className="mt-2 text-sm sm:text-base">{description}</CardDescription>
         </CardHeader>
-        <CardContent>
-          <div className="flex flex-wrap gap-2">
+        <CardContent className="p-4 sm:p-6 pt-0">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
             {actors.map((actor, idx) => (
               <span
                 key={idx}

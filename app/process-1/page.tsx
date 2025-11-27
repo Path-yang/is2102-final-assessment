@@ -47,8 +47,8 @@ export default function Process1() {
   const currentStepProps = steps[currentStep - 1].props
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="container mx-auto px-4 max-w-4xl">
+    <div className="min-h-screen bg-gray-50 py-4 sm:py-8">
+      <div className="container mx-auto px-3 sm:px-4 max-w-4xl">
         <BackButton />
         {/* @ts-ignore - Dynamic component props */}
         <CurrentStepComponent {...currentStepProps} />

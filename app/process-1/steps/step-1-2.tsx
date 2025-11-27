@@ -29,20 +29,20 @@ export default function Step1_2({ onNext, formData, setFormData }: Step1_2Props)
   }
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold mb-2">Create Your Account</h1>
-        <p className="text-gray-600">Let's get started with your basic information</p>
+    <div className="space-y-4 sm:space-y-6">
+      <div className="px-1">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">Create Your Account</h1>
+        <p className="text-sm sm:text-base text-gray-600">Let's get started with your basic information</p>
       </div>
 
       <ProgressIndicator currentStep={1} totalSteps={3} />
 
       <Card>
-        <CardHeader>
-          <CardTitle>Registration Form</CardTitle>
+        <CardHeader className="p-4 sm:p-6">
+          <CardTitle className="text-lg sm:text-xl">Registration Form</CardTitle>
         </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
+        <CardContent className="p-4 sm:p-6 pt-0">
+          <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
             <div>
               <Label htmlFor="fullName">Full Name *</Label>
               <Input

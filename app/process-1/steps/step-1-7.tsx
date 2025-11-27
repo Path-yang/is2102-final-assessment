@@ -24,18 +24,18 @@ export default function Step1_7({ onNext, formData }: Step1_7Props) {
   })
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold mb-2">Find Opportunities</h1>
-        <p className="text-gray-600">Discover volunteer opportunities that match your interests</p>
+    <div className="space-y-4 sm:space-y-6">
+      <div className="px-1">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">Find Opportunities</h1>
+        <p className="text-sm sm:text-base text-gray-600">Discover volunteer opportunities that match your interests</p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6">
         <Card className="lg:col-span-1">
-          <CardHeader>
-            <CardTitle className="text-lg">Filters</CardTitle>
+          <CardHeader className="p-4 sm:p-6">
+            <CardTitle className="text-base sm:text-lg">Filters</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-3 sm:space-y-4 p-4 sm:p-6 pt-0">
             <div>
               <Label htmlFor="dateRange">Date Range</Label>
               <Input
@@ -96,13 +96,13 @@ export default function Step1_7({ onNext, formData }: Step1_7Props) {
           </CardContent>
         </Card>
 
-        <div className="lg:col-span-3 space-y-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-xl font-semibold">Recommended for You</h2>
-            <div className="flex gap-2">
-              <Button variant="outline" size="sm">List</Button>
-              <Button variant="outline" size="sm">Calendar</Button>
-              <Button variant="outline" size="sm">Map</Button>
+        <div className="lg:col-span-3 space-y-3 sm:space-y-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0">
+            <h2 className="text-lg sm:text-xl font-semibold">Recommended for You</h2>
+            <div className="flex gap-1.5 sm:gap-2 w-full sm:w-auto">
+              <Button variant="outline" size="sm" className="flex-1 sm:flex-none text-xs sm:text-sm">List</Button>
+              <Button variant="outline" size="sm" className="flex-1 sm:flex-none text-xs sm:text-sm">Calendar</Button>
+              <Button variant="outline" size="sm" className="flex-1 sm:flex-none text-xs sm:text-sm">Map</Button>
             </div>
           </div>
 
@@ -112,25 +112,25 @@ export default function Step1_7({ onNext, formData }: Step1_7Props) {
               className="cursor-pointer hover:shadow-md transition-shadow"
               onClick={() => onNext({ selectedEvent: event })}
             >
-              <CardContent className="pt-6">
-                <div className="flex justify-between items-start">
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold mb-2">{event.name}</h3>
-                    <div className="space-y-1 text-sm text-gray-600">
+              <CardContent className="pt-4 sm:pt-6 p-4 sm:p-6">
+                <div className="flex flex-col sm:flex-row justify-between items-start gap-3 sm:gap-0">
+                  <div className="flex-1 w-full">
+                    <h3 className="text-base sm:text-lg font-semibold mb-1 sm:mb-2">{event.name}</h3>
+                    <div className="space-y-1 text-xs sm:text-sm text-gray-600">
                       <p>
                         📅 {event.date} • ⏰ {event.time}
                       </p>
                       <p>📍 {event.location}</p>
-                      <div className="flex gap-2 mt-2">
+                      <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-2">
                         {event.shifts.map((shift) => (
-                          <Badge key={shift.id} variant="secondary">
+                          <Badge key={shift.id} variant="secondary" className="text-xs">
                             {shift.volunteersRegistered}/{shift.volunteersNeeded} spots
                           </Badge>
                         ))}
                       </div>
                     </div>
                   </div>
-                  <Button>View Details</Button>
+                  <Button className="w-full sm:w-auto mt-2 sm:mt-0">View Details</Button>
                 </div>
               </CardContent>
             </Card>

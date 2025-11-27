@@ -32,7 +32,7 @@ const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>(
       <div
         ref={ref}
         className={cn(
-          "relative bg-white rounded-lg shadow-lg p-6 max-w-lg w-full mx-4",
+          "relative bg-white rounded-lg shadow-lg p-4 sm:p-6 max-w-lg w-full mx-2 sm:mx-4 max-h-[90vh] overflow-y-auto",
           className
         )}
         {...props}
@@ -40,9 +40,9 @@ const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>(
         {onClose && (
           <button
             onClick={onClose}
-            className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+            className="absolute right-2 top-2 sm:right-4 sm:top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 p-1"
           >
-            <X className="h-4 w-4" />
+            <X className="h-4 w-4 sm:h-5 sm:w-5" />
             <span className="sr-only">Close</span>
           </button>
         )}

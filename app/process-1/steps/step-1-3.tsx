@@ -48,25 +48,25 @@ export default function Step1_3({ onNext, onBack, formData, setFormData }: Step1
   }
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold mb-2">Skills & Interests</h1>
-        <p className="text-gray-600">Help us match you with the right opportunities</p>
+    <div className="space-y-4 sm:space-y-6">
+      <div className="px-1">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">Skills & Interests</h1>
+        <p className="text-sm sm:text-base text-gray-600">Help us match you with the right opportunities</p>
       </div>
 
       <ProgressIndicator currentStep={2} totalSteps={3} />
 
       <Card>
-        <CardHeader>
-          <CardTitle>Tell Us About Yourself</CardTitle>
+        <CardHeader className="p-4 sm:p-6">
+          <CardTitle className="text-lg sm:text-xl">Tell Us About Yourself</CardTitle>
         </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-6">
+        <CardContent className="p-4 sm:p-6 pt-0">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             <div>
-              <Label className="text-base font-semibold mb-3 block">
+              <Label className="text-sm sm:text-base font-semibold mb-2 sm:mb-3 block">
                 Skills
               </Label>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                 {mockSkills.map((skill) => (
                   <div key={skill} className="flex items-center space-x-2">
                     <Checkbox
@@ -106,10 +106,10 @@ export default function Step1_3({ onNext, onBack, formData, setFormData }: Step1
             </div>
 
             <div>
-              <Label className="text-base font-semibold mb-3 block">
+              <Label className="text-sm sm:text-base font-semibold mb-2 sm:mb-3 block">
                 Interest Areas
               </Label>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                 {mockInterests.map((interest) => (
                   <div key={interest} className="flex items-center space-x-2">
                     <Checkbox

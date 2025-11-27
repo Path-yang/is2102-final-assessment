@@ -54,26 +54,27 @@ export default function Step1_4({ onNext, onBack, formData, setFormData }: Step1
   }
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold mb-2">Availability Preferences</h1>
-        <p className="text-gray-600">When are you available to volunteer?</p>
+    <div className="space-y-4 sm:space-y-6">
+      <div className="px-1">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">Availability Preferences</h1>
+        <p className="text-sm sm:text-base text-gray-600">When are you available to volunteer?</p>
       </div>
 
       <ProgressIndicator currentStep={3} totalSteps={3} />
 
       <Card>
-        <CardHeader>
-          <CardTitle>Weekly Availability</CardTitle>
+        <CardHeader className="p-4 sm:p-6">
+          <CardTitle className="text-lg sm:text-xl">Weekly Availability</CardTitle>
         </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-6">
+        <CardContent className="p-4 sm:p-6 pt-0">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             <div>
-              <Label className="text-base font-semibold mb-3 block">
+              <Label className="text-sm sm:text-base font-semibold mb-2 sm:mb-3 block">
                 Select your available times
               </Label>
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse">
+              <div className="overflow-x-auto -mx-4 sm:mx-0">
+                <div className="inline-block min-w-full px-4 sm:px-0">
+                  <table className="w-full border-collapse text-xs sm:text-sm">
                   <thead>
                     <tr>
                       <th className="border p-2 text-left">Time / Day</th>
@@ -104,6 +105,7 @@ export default function Step1_4({ onNext, onBack, formData, setFormData }: Step1
                     ))}
                   </tbody>
                 </table>
+                </div>
               </div>
             </div>
 
