@@ -13,6 +13,16 @@ import { CheckCircle2, X, AlertCircle, Clock } from "lucide-react"
 export default function CoordinatorView() {
   const [currentStep, setCurrentStep] = useState(1)
   const [rejectionReason, setRejectionReason] = useState("")
+  const [approvedSubmissions, setApprovedSubmissions] = useState<Set<string>>(new Set())
+  const [currentSubmissionId, setCurrentSubmissionId] = useState<string | null>(null)
+
+  const submissions = [
+    { id: "john-doe", name: "John Doe", event: "Food Pantry", hours: 4.5, date: "Dec 2" },
+    { id: "jane-smith", name: "Jane Smith", event: "Clean-up", hours: 3, date: "Dec 1" },
+  ]
+
+  const pendingSubmissions = submissions.filter(sub => !approvedSubmissions.has(sub.id))
+  const pendingCount = pendingSubmissions.length
 
   if (currentStep === 1) {
     return (
@@ -25,39 +35,45 @@ export default function CoordinatorView() {
             <div className="p-4 bg-orange-50 border border-orange-200 rounded-lg">
               <div className="flex items-center gap-2 mb-2">
                 <AlertCircle className="w-5 h-5 text-orange-600" />
-                <span className="font-semibold text-orange-900">12 Pending Approvals</span>
+                <span className="font-semibold text-orange-900">{pendingCount} Pending Approvals</span>
               </div>
             </div>
 
             <div>
               <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3">Recent Submissions</h3>
-              <div className="space-y-3">
-                {[
-                  { name: "John Doe", event: "Food Pantry", hours: 4.5, date: "Dec 2" },
-                  { name: "Jane Smith", event: "Clean-up", hours: 3, date: "Dec 1" },
-                ].map((submission, idx) => (
-                  <div key={idx} className="border rounded-lg overflow-hidden">
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 p-2.5 sm:p-3">
-                      <div className="min-w-0 flex-1">
-                        <p className="text-sm sm:text-base font-medium">{submission.name}</p>
-                        <p className="text-xs sm:text-sm text-gray-600">
-                          {submission.event} • {submission.hours} hours • {submission.date}
-                        </p>
+              {pendingSubmissions.length > 0 ? (
+                <div className="space-y-3">
+                  {pendingSubmissions.map((submission) => (
+                    <div key={submission.id} className="border rounded-lg overflow-hidden">
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 p-2.5 sm:p-3">
+                        <div className="min-w-0 flex-1">
+                          <p className="text-sm sm:text-base font-medium">{submission.name}</p>
+                          <p className="text-xs sm:text-sm text-gray-600">
+                            {submission.event} • {submission.hours} hours • {submission.date}
+                          </p>
+                        </div>
+                        <Badge variant="warning" className="text-xs">Pending</Badge>
                       </div>
-                      <Badge variant="warning" className="text-xs">Pending</Badge>
+                      <div className="px-2.5 sm:px-3 pb-2.5 sm:pb-3">
+                        <Button 
+                          onClick={() => {
+                            setCurrentSubmissionId(submission.id)
+                            setCurrentStep(3)
+                          }} 
+                          size="sm" 
+                          className="w-full sm:w-auto"
+                        >
+                          Approve Hours
+                        </Button>
+                      </div>
                     </div>
-                    <div className="px-2.5 sm:px-3 pb-2.5 sm:pb-3">
-                      <Button 
-                        onClick={() => setCurrentStep(3)} 
-                        size="sm" 
-                        className="w-full sm:w-auto"
-                      >
-                        Approve Hours
-                      </Button>
-                    </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="p-4 text-center text-gray-500 border rounded-lg">
+                  <p className="text-sm">No pending submissions</p>
+                </div>
+              )}
             </div>
           </CardContent>
         </Card>
@@ -307,7 +323,13 @@ export default function CoordinatorView() {
               </div>
               <h1 className="text-2xl font-bold">Hours Approved</h1>
               <p className="text-gray-600">Volunteer has been notified</p>
-              <Button onClick={() => setCurrentStep(1)} className="w-full">
+              <Button onClick={() => {
+                if (currentSubmissionId) {
+                  setApprovedSubmissions(prev => new Set(prev).add(currentSubmissionId))
+                  setCurrentSubmissionId(null)
+                }
+                setCurrentStep(1)
+              }} className="w-full">
                 Back to Dashboard
               </Button>
             </div>
