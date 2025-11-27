@@ -11,6 +11,7 @@ import Step1_6 from "./steps/step-1-6"
 import Step1_7 from "./steps/step-1-7"
 import Step1_8 from "./steps/step-1-8"
 import Step1_9 from "./steps/step-1-9"
+import Step1_9b from "./steps/step-1-9b"
 import Step1_10 from "./steps/step-1-10"
 import Step1_11 from "./steps/step-1-11"
 
@@ -26,8 +27,13 @@ export default function Process1() {
         setCurrentStep(7)
         return
       }
+      // If navigating to confirmation page after sign-up dialog
+      if (data.goToConfirmPage) {
+        setCurrentStep(10) // Go to step-1-9b (index 9, which is step 10)
+        return
+      }
     }
-    setCurrentStep((prev) => Math.min(prev + 1, 11))
+    setCurrentStep((prev) => Math.min(prev + 1, 12))
   }
 
   const handleBack = () => {
@@ -44,6 +50,7 @@ export default function Process1() {
     { component: Step1_7, props: { onNext: handleNext, formData } },
     { component: Step1_8, props: { onNext: handleNext, formData } },
     { component: Step1_9, props: { onNext: handleNext, formData } },
+    { component: Step1_9b, props: { onNext: handleNext, onBack: handleBack, formData } },
     { component: Step1_10, props: { onNext: handleNext, formData } },
     { component: Step1_11, props: { formData } },
   ]

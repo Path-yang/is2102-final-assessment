@@ -34,10 +34,12 @@ export default function Step1_9({ onNext, formData }: Step1_9Props) {
 
   const handleConfirmSignup = () => {
     setShowConfirmDialog(false)
+    // Go to intermediate confirmation page (step-1-9b)
     onNext({
       selectedShift,
       specialRequirements,
       emergencyContact,
+      goToConfirmPage: true,
     })
   }
 
