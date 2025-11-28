@@ -7,11 +7,14 @@ import { Badge } from "@/components/ui/badge"
 import { CheckCircle2, MapPin, Clock, Star, Share2, AlertCircle } from "lucide-react"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
+import { ErrorModal } from "@/components/modals/ErrorModal"
 
 export default function VolunteerCheckin() {
   const [currentStep, setCurrentStep] = useState(1)
   const [rating, setRating] = useState(0)
   const [feedback, setFeedback] = useState("")
+  const [showCameraError, setShowCameraError] = useState(false)
+  const [showLocationError, setShowLocationError] = useState(false)
 
   if (currentStep === 1) {
     return (
@@ -54,66 +57,110 @@ export default function VolunteerCheckin() {
 
   if (currentStep === 2) {
     return (
-      <div className="space-y-4 sm:space-y-6">
-        <Card>
-          <CardContent className="pt-6">
-            <div className="text-center space-y-3 sm:space-y-4">
-              <h1 className="text-xl sm:text-2xl font-bold">QR Scanner</h1>
-              <div className="relative">
-                <div className="w-full h-64 sm:h-96 bg-gray-900 rounded-lg flex items-center justify-center">
-                  <div className="border-2 sm:border-4 border-white rounded-lg w-48 h-48 sm:w-64 sm:h-64 flex items-center justify-center">
-                    <p className="text-white text-xs sm:text-sm">Camera View</p>
+      <>
+        <div className="space-y-4 sm:space-y-6">
+          <Card>
+            <CardContent className="pt-6">
+              <div className="text-center space-y-3 sm:space-y-4">
+                <h1 className="text-xl sm:text-2xl font-bold">QR Scanner</h1>
+                <div className="relative">
+                  <div className="w-full h-64 sm:h-96 bg-gray-900 rounded-lg flex items-center justify-center">
+                    <div className="border-2 sm:border-4 border-white rounded-lg w-48 h-48 sm:w-64 sm:h-64 flex items-center justify-center">
+                      <p className="text-white text-xs sm:text-sm">Camera View</p>
+                    </div>
+                  </div>
+                  <div className="absolute top-2 left-2 right-2 sm:top-4 sm:left-4 sm:right-4 flex justify-between gap-2">
+                    <Button variant="outline" size="sm" className="text-xs sm:text-sm">Flash</Button>
+                    <Button variant="outline" size="sm" className="text-xs sm:text-sm">Switch Camera</Button>
                   </div>
                 </div>
-                <div className="absolute top-2 left-2 right-2 sm:top-4 sm:left-4 sm:right-4 flex justify-between gap-2">
-                  <Button variant="outline" size="sm" className="text-xs sm:text-sm">Flash</Button>
-                  <Button variant="outline" size="sm" className="text-xs sm:text-sm">Switch Camera</Button>
-                </div>
+                <p className="text-xs sm:text-sm text-gray-600 px-2">
+                  Point your camera at the check-in QR code
+                </p>
+                <button
+                  onClick={() => setCurrentStep(3)}
+                  className="text-xs sm:text-sm text-primary hover:underline"
+                >
+                  Having trouble? Enter code manually
+                </button>
+                <Button onClick={() => setCurrentStep(3)} className="w-full">
+                  Simulate QR Scan
+                </Button>
+                <Button 
+                  variant="outline" 
+                  onClick={() => setShowCameraError(true)}
+                  className="w-full text-destructive"
+                >
+                  Test Camera Permission Error
+                </Button>
               </div>
-              <p className="text-xs sm:text-sm text-gray-600 px-2">
-                Point your camera at the check-in QR code
-              </p>
-              <button
-                onClick={() => setCurrentStep(3)}
-                className="text-xs sm:text-sm text-primary hover:underline"
-              >
-                Having trouble? Enter code manually
-              </button>
-              <Button onClick={() => setCurrentStep(3)} className="w-full">
-                Simulate QR Scan
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+            </CardContent>
+          </Card>
+        </div>
+        <ErrorModal
+          type="camera"
+          open={showCameraError}
+          onOpenChange={setShowCameraError}
+          onRetry={() => {
+            console.log("Opening settings...")
+            setShowCameraError(false)
+          }}
+          onDismiss={() => {
+            console.log("Entering code manually...")
+            setShowCameraError(false)
+          }}
+        />
+      </>
     )
   }
 
   if (currentStep === 3) {
     return (
-      <div className="space-y-4 sm:space-y-6">
-        <Card>
-          <CardContent className="pt-6">
-            <div className="text-center space-y-4">
-              <div className="flex justify-center">
-                <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center">
-                  <MapPin className="w-8 h-8 text-blue-600" />
+      <>
+        <div className="space-y-4 sm:space-y-6">
+          <Card>
+            <CardContent className="pt-6">
+              <div className="text-center space-y-4">
+                <div className="flex justify-center">
+                  <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center">
+                    <MapPin className="w-8 h-8 text-blue-600" />
+                  </div>
                 </div>
+                <h1 className="text-xl font-bold">Verifying your location...</h1>
+                <div className="h-64 bg-gray-100 rounded-lg flex items-center justify-center relative">
+                  <div className="absolute top-4 left-4 bg-red-500 w-4 h-4 rounded-full border-2 border-white"></div>
+                  <div className="absolute bottom-4 right-4 bg-blue-500 w-4 h-4 rounded-full border-2 border-white"></div>
+                  <p className="text-gray-500">Map View</p>
+                </div>
+                <p className="text-sm text-gray-600">You are 50 meters from the venue</p>
+                <Button onClick={() => setCurrentStep(4)} className="w-full">
+                  Continue
+                </Button>
+                <Button 
+                  variant="outline" 
+                  onClick={() => setShowLocationError(true)}
+                  className="w-full text-destructive"
+                >
+                  Test Location Verification Error
+                </Button>
               </div>
-              <h1 className="text-xl font-bold">Verifying your location...</h1>
-              <div className="h-64 bg-gray-100 rounded-lg flex items-center justify-center relative">
-                <div className="absolute top-4 left-4 bg-red-500 w-4 h-4 rounded-full border-2 border-white"></div>
-                <div className="absolute bottom-4 right-4 bg-blue-500 w-4 h-4 rounded-full border-2 border-white"></div>
-                <p className="text-gray-500">Map View</p>
-              </div>
-              <p className="text-sm text-gray-600">You are 50 meters from the venue</p>
-              <Button onClick={() => setCurrentStep(4)} className="w-full">
-                Continue
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+            </CardContent>
+          </Card>
+        </div>
+        <ErrorModal
+          type="location"
+          open={showLocationError}
+          onOpenChange={setShowLocationError}
+          onRetry={() => {
+            console.log("Retrying location verification...")
+            setShowLocationError(false)
+          }}
+          onDismiss={() => {
+            console.log("Requesting manual check-in...")
+            setShowLocationError(false)
+          }}
+        />
+      </>
     )
   }
 
