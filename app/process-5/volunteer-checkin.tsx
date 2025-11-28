@@ -101,14 +101,6 @@ export default function VolunteerCheckin() {
           type="camera"
           open={showCameraError}
           onOpenChange={setShowCameraError}
-          onRetry={() => {
-            console.log("Opening settings...")
-            setShowCameraError(false)
-          }}
-          onDismiss={() => {
-            console.log("Entering code manually...")
-            setShowCameraError(false)
-          }}
         />
       </>
     )
@@ -151,14 +143,6 @@ export default function VolunteerCheckin() {
           type="location"
           open={showLocationError}
           onOpenChange={setShowLocationError}
-          onRetry={() => {
-            console.log("Retrying location verification...")
-            setShowLocationError(false)
-          }}
-          onDismiss={() => {
-            console.log("Requesting manual check-in...")
-            setShowLocationError(false)
-          }}
         />
       </>
     )
