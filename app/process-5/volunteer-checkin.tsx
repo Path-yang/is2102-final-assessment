@@ -10,6 +10,8 @@ import { Label } from "@/components/ui/label"
 
 export default function VolunteerCheckin() {
   const [currentStep, setCurrentStep] = useState(1)
+  const [rating, setRating] = useState(0)
+  const [feedback, setFeedback] = useState("")
 
   if (currentStep === 1) {
     return (
@@ -211,9 +213,6 @@ export default function VolunteerCheckin() {
   }
 
   if (currentStep === 6) {
-    const [rating, setRating] = useState(0)
-    const [feedback, setFeedback] = useState("")
-
     return (
       <div className="space-y-4 sm:space-y-6">
         <Card>

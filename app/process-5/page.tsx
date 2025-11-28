@@ -10,11 +10,11 @@ export default function Process5() {
   const [activeTab, setActiveTab] = useState("coordinator")
 
   return (
-    <div className="min-h-screen bg-gray-50 py-4 sm:py-4 sm:py-8">
-      <div className="container mx-auto px-3 sm:px-3 sm:px-4max-w-6xl">
+    <div className="min-h-screen bg-gray-50 py-4 sm:py-8">
+      <div className="container mx-auto px-3 sm:px-4 max-w-6xl">
         <BackButton />
-        <div className="mb-3 sm:mb-4 sm:mb-3 sm:mb-4 sm:mb-6 px-1">
-          <h1 className="text-xl sm:text-2xl md:text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">QR Check-in & Auto Hour Logging</h1>
+        <div className="mb-3 sm:mb-4 sm:mb-6 px-1">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">QR Check-in & Auto Hour Logging</h1>
           <p className="text-sm sm:text-base text-gray-600">Coordinator setup and volunteer check-in</p>
         </div>
         <Tabs value={activeTab} onValueChange={setActiveTab}>
